@@ -6,7 +6,7 @@ class Sertifikasi extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('M_cekuser');
-		
+
 	}
 
 	public function index()
@@ -53,7 +53,7 @@ class Sertifikasi extends CI_Controller {
 			'petugas_2' => $this->input->post('petugas2'),
 			'tanggal_audit' => $this->input->post('tgl_audit'),
 			'tanggal_audit_selesai' => $this->input->post('tgl_audit_selesai'),
-			'batas_waktu_perbaikan' => $this->input->post('batas_waktu_perbaikan'), 
+			'batas_waktu_perbaikan' => $this->input->post('batas_waktu_perbaikan'),
 			'tanggal_perbaikan' => $this->input->post('tgl_perbaikan'),
 			'keterangan' => $this->input->post('keterangan'),
 			'terbit_rekomendasi' => $this->input->post('terbit_rekomendasi'),
@@ -62,6 +62,43 @@ class Sertifikasi extends CI_Controller {
 		$this->db->where('id_data', $id_data);
 		$this->db->update('tb_data', $update);
 		redirect('sertifikasi/sertifikasi');
+	}
+	public function baru()
+	{
+		//$this->db->get('', limit, offset);
+		$data['kabupaten']=$this->db->get('tb_kabupaten');
+		$data['kategori']=$this->db->get('tb_kategori');
+		$data['jenis_sarana']=$this->db->get('tb_jenis_sarana');
+		$this->db->where('id_role', '4');
+		$data['petugas']=$this->db->get('tb_user');
+		$this->load->view('header');
+		$this->load->view('sertifikasi/baru_sertifikasi',$data);
+	}
+	public function baru_process()
+	{
+		$insert_sarana = array(
+			'nama_sarana' => $this->input->post('nama_perusahaan'),
+			'alamat_sarana' => $this->input->post('alamat_perusahaan'),
+			'tlp_sarana' => $this->input->post('telepon_perusahaan'),
+			'email' => $this->input->post('email_perusahaan'),
+			'id_jenis_sarana' => $this->input->post('jenis_sarana'),
+			'id_detail_jenis_sarana' => $this->input->post('detail_jenis_sarana'),
+			'id_kabupaten' => $this->input->post('kabupaten'),
+		);
+		$this->db->insert('tb_sarana', $insert_sarana);
+		$insert_id=$this->db->insert_id();
+		$insert_data = array(
+			'nama_konsumen' => $this->input->post('nama_konsumen'),
+			'id_sarana' => $insert_id,
+			'id_jeniskonsultasi' => 4,
+			'id_kategori' => $this->input->post('kategori'),
+			'id_detail_kategori' => $this->input->post('detail_kategori'),
+			'detail_produk' => $this->input->post('detail_produk'),
+		);
+		$this->db->insert('tb_data', $insert_data);
+		$insert_id=$this->db->insert_id();
+		$redir = 'sertifikasi/sertifikasi/edit/'.$insert_id;
+		redirect($redir);
 	}
 
 }
