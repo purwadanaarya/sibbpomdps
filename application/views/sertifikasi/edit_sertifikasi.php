@@ -21,11 +21,12 @@
       <div class="box box-solid box-primary">
       <div class="box-header with-border">
         <!-- <h3 class="box-title">Users</h3> <button class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan" id='btn_tambah'><i class="fa fa-plus" style="margin-right:5px"></i>Create New</button> -->
-        <h3 class="box-title">Data Sertifikasi</h3> 
+        <h3 class="box-title">Data Sertifikasi</h3>
       </div>
       <div class="box-body" style="overflow-x:auto;" width="100%">
-        <?php 
+        <?php
           foreach ($data->result_array() as $key) {
+            $id_jenis_sarana=$key['id_jenis_sarana'];
             $id_data = $key['id_data'];
             $nama_konsumen = $key['nama_konsumen'];
             $nama_sarana = $key['nama_sarana'];
@@ -117,25 +118,25 @@
               <input readonly class="form-control" value="<?php echo $jenis_sarana ?>" placeholder="Nama Konsumen" type="text" name="nama_konsumen">
             </div>
           </div>
-          <div class="col-md-6">   
+          <div class="col-md-6">
             <div class="form-group">
               <label>Detail Jenis Perusahaan</label>
               <input readonly class="form-control" value="<?php echo $detail_jenis_sarana ?>" placeholder="Nama Konsumen" type="text" name="nama_konsumen">
             </div>
           </div>
-          <div class="col-md-4">   
+          <div class="col-md-4">
             <div class="form-group">
               <label>Kategori Produk</label>
               <input readonly class="form-control" value="<?php echo $kategori ?>" placeholder="Nama Konsumen" type="text" name="nama_konsumen">
             </div>
           </div>
-          <div class="col-md-4">   
+          <div class="col-md-4">
             <div class="form-group">
               <label>Detail Kategori Produk</label>
               <input readonly class="form-control" value="<?php echo $detail_kategori ?>" placeholder="Nama Konsumen" type="text" name="nama_konsumen">
             </div>
           </div>
-          <div class="col-md-4">   
+          <div class="col-md-4">
             <div class="form-group">
               <label>Deskripsi Produk</label>
               <input readonly class="form-control" value="<?php echo $detail_produk ?>" placeholder="Nama Konsumen" type="text" name="nama_konsumen">
@@ -223,14 +224,23 @@
               <input class="form-control" placeholder="" value="<?php echo $terbit_rekomendasi ?>" type="date" name="terbit_rekomendasi">
             </div>
           </div>
+          <?php if ($id_jenis_sarana==1) {
+              $keterangan = 'Rekomendasi';
+          } elseif ($id_jenis_sarana==2) {
+              $keterangan = 'Aspek Pemenuhan CPKB';
+          } elseif ($id_jenis_sarana==3) {
+              $keterangan = 'Aspek Pemenuhan CPOTB';
+          } elseif ($id_jenis_sarana==4) {
+              $keterangan = 'Aspek Pemenuhan CDOB';
+          } ?>
           <div class="col-md-12">
             <div class="form-group">
               <label>Status PSB</label>
               <select required="" name="status_dokumen" class="form-control">
                 <option value="">- Pilih Status PSB -</option>
-                <option value="Belum Terbit">Belum Terbit</option>
-                <option value="Tidak Terbit">Tidak Terbit</option>
-                <option value="Terbit">Terbit</option>
+                <option value="Belum Terbit">Belum Terbit <?php echo $keterangan ?></option>
+                <option value="Tidak Terbit">Tidak Terbit <?php echo $keterangan ?></option>
+                <option value="Terbit">Terbit <?php echo $keterangan ?></option>
               </select>
             </div>
           </div>
@@ -254,7 +264,7 @@
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
-  
+
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url('assets/Styling/plugins/jQuery/jquery-2.2.3.min.js') ?>"></script>
 
