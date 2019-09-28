@@ -127,7 +127,7 @@
             </div>
             <a href="<?php echo base_url('infokom/konsultasi') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
-        </div>  
+        </div>
         <div class="col-sm-6">
           <div class="small-box bg-aqua">
             <div class="inner">
@@ -140,50 +140,178 @@
             </div>
             <a href="<?php echo base_url('infokom/konsultasi') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
-        </div>      
+        </div>
         <?php } elseif ($this->session->userdata('si_idrole')==4) { ?>
+          <!-- pangan -->
+        <div class="col-md-12"><h3><b>Pangan</b></h3></div>
         <div class="col-sm-4">
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><?php echo $jumlah_capa ?></h3>
+              <h3><?php echo $pangan_tidak ?></h3>
 
-              <p>Jumlah CAPA</p>
+              <p>Jumlah Tidak Terbit</p>
             </div>
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
             <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
-        </div>  
+        </div>
         <div class="col-sm-4">
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><?php echo $jumlah_tmk ?></h3>
+              <h3><?php echo $pangan_belum ?></h3>
 
-              <p>Jumlah TMK</p>
+              <p>Jumlah Belum Terbit</p>
             </div>
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
             <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
-        </div>   
+        </div>
         <div class="col-sm-4">
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><?php echo $jumlah_mk ?></h3>
+              <h3><?php echo $pangan_terbit ?></h3>
 
-              <p>Jumlah MK</p>
+              <p>Jumlah Terbit</p>
             </div>
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
             <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
-        </div>        
+        </div>
+
+        <!-- kosmetik -->
+        <div class="col-md-12"><h3><b>Kosmetik</b></h3></div>
+        <div class="col-sm-4">
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3><?php echo $kosmetik_tidak ?></h3>
+
+              <p>Jumlah Tidak Terbit</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-archive"></i>
+            </div>
+            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3><?php echo $kosmetik_belum ?></h3>
+
+              <p>Jumlah Belum Terbit</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-archive"></i>
+            </div>
+            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3><?php echo $kosmetik_terbit ?></h3>
+
+              <p>Jumlah Terbit</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-archive"></i>
+            </div>
+            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        <!-- ot -->
+        <div class="col-md-12"><h3><b>Obat Tradisional</b></h3></div>
+        <div class="col-sm-4">
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3><?php echo $ot_tidak ?></h3>
+
+              <p>Jumlah Tidak Terbit</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-archive"></i>
+            </div>
+            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3><?php echo $ot_belum ?></h3>
+
+              <p>Jumlah Belum Terbit</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-archive"></i>
+            </div>
+            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3><?php echo $ot_terbit ?></h3>
+
+              <p>Jumlah Terbit</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-archive"></i>
+            </div>
+            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        <!-- obat -->
+        <div class="col-md-12"><h3><b>Obat</b></h3></div>
+        <div class="col-sm-4">
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3><?php echo $obat_tidak ?></h3>
+
+              <p>Jumlah Tidak Terbit</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-archive"></i>
+            </div>
+            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3><?php echo $obat_belum ?></h3>
+
+              <p>Jumlah Belum Terbit</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-archive"></i>
+            </div>
+            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3><?php echo $obat_terbit ?></h3>
+
+              <p>Jumlah Terbit</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-archive"></i>
+            </div>
+            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
         <?php } ?>
           <!-- small box -->
-          
+
       </div>
     </section>
   </div>

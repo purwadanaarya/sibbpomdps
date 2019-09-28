@@ -12,13 +12,13 @@ class Home extends CI_Controller {
 	// 	$username = $this->session->userdata('username');
 	// 	$this->db->where('username', $username);
 	// 	$data['total'] = $this->db->get('tb_kegiatan')->num_rows();
-		
+
 	// 	$max = date('Y').'-'.date('m').'-31';
 	// 	$min = date('Y').'-'.date('m').'-01';
 	// 	$this->db->where('tb_kegiatan.tgl BETWEEN "'. date('Y-m-d', strtotime($min)). '" and "'. date('Y-m-d', strtotime($max)).'"');
 	// 	$this->db->where('username', $username);
-	// 	$data['jumlah_tanggal'] = $this->db->get('tb_kegiatan')->num_rows();	
-		
+	// 	$data['jumlah_tanggal'] = $this->db->get('tb_kegiatan')->num_rows();
+
 	// 	$this->load->view('Header');
 	// 	$this->load->view('Beranda',$data);
 	// }
@@ -46,15 +46,69 @@ class Home extends CI_Controller {
 				$data['jumlah_konsultasi']=$this->db->get('tb_data')->num_rows();
 				$data['jumlah_sarana']=$this->db->get('tb_sarana')->num_rows();
 			} elseif ($this->session->userdata('si_idrole')==4) {
-				$this->db->where('status_dokumen', 'TMK');
-				$data['jumlah_tmk']=$this->db->get('tb_data')->num_rows();
-				$this->db->where('status_dokumen', 'MK');
-				$data['jumlah_mk']=$this->db->get('tb_data')->num_rows();
-				$this->db->where('status_dokumen', 'CAPA');
-				$data['jumlah_capa']=$this->db->get('tb_data')->num_rows();
-				$this->db->where('status','PSB');
-				$data['jumlah_sertifikasi']=$this->db->get('tb_data')->num_rows();
-				$data['jumlah_sarana']=$this->db->get('tb_sarana')->num_rows();
+				//Tidak Terbit
+				$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
+				$this->db->where('id_jenis_sarana', 1);
+				$this->db->where('status_dokumen', 'Tidak Terbit');
+				$data['pangan_tidak']=$this->db->get('tb_data')->num_rows();
+				//---------------------------------------------------------------//
+				$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
+				$this->db->where('id_jenis_sarana', 2);
+				$this->db->where('status_dokumen', 'Tidak Terbit');
+				$data['kosmetik_tidak']=$this->db->get('tb_data')->num_rows();
+				//---------------------------------------------------------------//
+				$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
+				$this->db->where('id_jenis_sarana', 3);
+				$this->db->where('status_dokumen', 'Tidak Terbit');
+				$data['ot_tidak']=$this->db->get('tb_data')->num_rows();
+				//---------------------------------------------------------------//
+				$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
+				$this->db->where('id_jenis_sarana', 4);
+				$this->db->where('status_dokumen', 'Tidak Terbit');
+				$data['obat_tidak']=$this->db->get('tb_data')->num_rows();
+				//---------------------------------------------------------------//
+				//Terbit
+				$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
+				$this->db->where('id_jenis_sarana', 1);
+				$this->db->where('status_dokumen', 'Terbit');
+				$data['pangan_terbit']=$this->db->get('tb_data')->num_rows();
+				//---------------------------------------------------------------//
+				$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
+				$this->db->where('id_jenis_sarana', 2);
+				$this->db->where('status_dokumen', 'Terbit');
+				$data['kosmetik_terbit']=$this->db->get('tb_data')->num_rows();
+				//---------------------------------------------------------------//
+				$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
+				$this->db->where('id_jenis_sarana', 3);
+				$this->db->where('status_dokumen', 'Terbit');
+				$data['ot_terbit']=$this->db->get('tb_data')->num_rows();
+				//---------------------------------------------------------------//
+				$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
+				$this->db->where('id_jenis_sarana', 4);
+				$this->db->where('status_dokumen', 'Terbit');
+				$data['obat_terbit']=$this->db->get('tb_data')->num_rows();
+				//---------------------------------------------------------------//
+				//Belum Terbit
+				$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
+				$this->db->where('id_jenis_sarana', 1);
+				$this->db->where('status_dokumen', 'Belum Terbit');
+				$data['pangan_belum']=$this->db->get('tb_data')->num_rows();
+				//---------------------------------------------------------------//
+				$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
+				$this->db->where('id_jenis_sarana', 2);
+				$this->db->where('status_dokumen', 'Belum Terbit');
+				$data['kosmetik_belum']=$this->db->get('tb_data')->num_rows();
+				//---------------------------------------------------------------//
+				$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
+				$this->db->where('id_jenis_sarana', 3);
+				$this->db->where('status_dokumen', 'Belum Terbit');
+				$data['ot_belum']=$this->db->get('tb_data')->num_rows();
+				//---------------------------------------------------------------//
+				$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
+				$this->db->where('id_jenis_sarana', 4);
+				$this->db->where('status_dokumen', 'Belum Terbit');
+				$data['obat_belum']=$this->db->get('tb_data')->num_rows();
+				//---------------------------------------------------------------//
 			}
 			$this->load->view('Header');
 			$this->load->view('Beranda',$data);
@@ -65,7 +119,7 @@ class Home extends CI_Controller {
 		// $this->load->view('Beranda');
 	}
 
-	
+
 }
 
 /* End of file  */
