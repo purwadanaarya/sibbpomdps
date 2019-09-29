@@ -11,7 +11,6 @@ class Konsultasi extends CI_Controller {
 	public function index()
 	{
 		$id_bidang=3;
-		$this->M_cekuser->cek_user($id_bidang);
 		$this->db->join('tb_kategori', 'tb_kategori.id_kategori = tb_data.id_kategori');
 		$this->db->join('tb_detail_kategori', 'tb_detail_kategori.id_detail_kategori = tb_data.id_detail_kategori');
 		$this->db->join('tb_jeniskonsultasi', 'tb_jeniskonsultasi.id_jeniskonsultasi = tb_data.id_jeniskonsultasi');
@@ -28,7 +27,7 @@ class Konsultasi extends CI_Controller {
 		$data['sarana'] 		  = $this->db->get('tb_sarana');
 		$data['kategori'] 		  = $this->db->get('tb_kategori');
 		$data['jenis_sarana']	  = $this->db->get('tb_jenis_sarana')->result();
-		$data['kabupaten']		  = $this->db->get('tb_kabupaten');	
+		$data['kabupaten']		  = $this->db->get('tb_kabupaten');
 		$this->load->view('header');
 		$this->load->view('infokom/new_konsultasi',$data);
 	}
@@ -51,7 +50,7 @@ class Konsultasi extends CI_Controller {
 			$this->session->set_flashdata('error','Gagal Menambah Data Perusahaan!');
 			redirect('infokom/konsultasi/baru');
 		}
-		
+
 	}
 	public function new_konsultasi()
 	{

@@ -32,7 +32,7 @@ class Home extends CI_Controller {
 				$data['allkategori']=$this->db->get('tb_kategori')->num_rows();
 				$data['allsub']=$this->db->get('tb_detail_kategori')->num_rows();
 				$data['allkonsultasi']=$this->db->get('tb_jeniskonsultasi')->num_rows();
-			} elseif ($this->session->userdata('si_idrole')==2) {
+			} elseif ($this->session->userdata('si_idrole')==0) {
 				$this->db->where('id_kategori', '1');
 				$data['konsultasi_pangan']=$this->db->get('tb_data')->num_rows();
 				$this->db->where('id_kategori', '2');
@@ -45,7 +45,7 @@ class Home extends CI_Controller {
 				$this->db->where('status','Konsultasi');
 				$data['jumlah_konsultasi']=$this->db->get('tb_data')->num_rows();
 				$data['jumlah_sarana']=$this->db->get('tb_sarana')->num_rows();
-			} elseif ($this->session->userdata('si_idrole')==4) {
+			} elseif (($this->session->userdata('si_idrole')==4)||($this->session->userdata('si_idrole')==2)) {
 				//Tidak Terbit
 				$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
 				$this->db->where('id_jenis_sarana', 1);
@@ -117,6 +117,25 @@ class Home extends CI_Controller {
 		// $data['banyak']=$this->db->query('SELECT COUNT(id_barang) as banyak FROM tb_barang');
 		// $this->load->view('Header');
 		// $this->load->view('Beranda');
+	}
+	public function detail()
+	{
+		$id = $this->input->get('id');
+		$status = $this->input->get('status');
+
+		$this->db->join('tb_jeniskonsultasi', 'tb_jeniskonsultasi.id_jeniskonsultasi = tb_data.id_jeniskonsultasi');
+		$this->db->join('tb_sarana', 'tb_sarana.id_sarana=tb_data.id_sarana');
+		$this->db->join('tb_kategori', 'tb_kategori.id_kategori=tb_data.id_kategori');
+		$this->db->join('tb_detail_kategori', 'tb_detail_kategori.id_detail_kategori = tb_data.id_detail_kategori');
+		$this->db->join('tb_jenis_sarana', 'tb_jenis_sarana.id_jenis_sarana = tb_sarana.id_jenis_sarana');
+		$this->db->join('tb_detail_jenis_sarana', 'tb_detail_jenis_sarana.id_detail_jenis_sarana = tb_sarana.id_detail_jenis_sarana');
+		//$this->db->where('status !=', 'Konsultasi');
+		$this->db->where('tb_sarana.id_jenis_sarana', $id);
+		$this->db->where('status_dokumen', $status);
+		$data['sertifikasi'] = $this->db->get('tb_data');
+
+		$this->load->view('header');
+		$this->load->view('sertifikasi/sertifikasi',$data);
 	}
 
 

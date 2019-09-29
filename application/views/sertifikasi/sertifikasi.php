@@ -16,13 +16,18 @@
             <i class="fa fa-list"></i> Manajemen Sertifikasi
           </h1>
     </section>
+    <?php if($this->session->userdata('si_idrole')==4){
+      $disabled='';
+    } else {
+      $disabled='disabled';
+    } ?>
     <!-- Main content -->
     <section class="content">
       <div class="box box-solid box-primary">
       <div class="box-header with-border">
         <!-- <h3 class="box-title">Users</h3> <button class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan" id='btn_tambah'><i class="fa fa-plus" style="margin-right:5px"></i>Create New</button> -->
-        <h3 class="box-title">Data Sertifikasi</h3><a href="<?php echo base_url('sertifikasi/sertifikasi/baru') ?>"><button class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan"><i class="fa fa-plus" style="margin-right:5px"></i>Tambah Data</button></a>
-        
+        <h3 class="box-title">Data Sertifikasi</h3><a href="<?php echo base_url('sertifikasi/sertifikasi/baru') ?>"><button <?php echo $disabled ?> class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan"><i class="fa fa-plus" style="margin-right:5px"></i>Tambah Data</button></a>
+
       </div>
       <div class="box-body" style="overflow-x:auto;">
         <table id="tb_data" class="table table-responsive table-striped table-bordered table-hover text-left" >
@@ -128,7 +133,7 @@
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
-  
+
 
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url('assets/Styling/plugins/jQuery/jquery-2.2.3.min.js') ?>"></script>

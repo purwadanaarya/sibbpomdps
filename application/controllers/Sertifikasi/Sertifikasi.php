@@ -12,7 +12,6 @@ class Sertifikasi extends CI_Controller {
 	public function index()
 	{
 		$id_bidang=4;
-		$this->M_cekuser->cek_user($id_bidang);
 		$this->db->join('tb_jeniskonsultasi', 'tb_jeniskonsultasi.id_jeniskonsultasi = tb_data.id_jeniskonsultasi');
 		$this->db->join('tb_sarana', 'tb_sarana.id_sarana=tb_data.id_sarana');
 		$this->db->join('tb_kategori', 'tb_kategori.id_kategori=tb_data.id_kategori');

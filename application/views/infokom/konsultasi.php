@@ -21,14 +21,15 @@
       <div class="box box-solid box-primary">
       <div class="box-header with-border">
         <!-- <h3 class="box-title">Users</h3> <button class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan" id='btn_tambah'><i class="fa fa-plus" style="margin-right:5px"></i>Create New</button> -->
-        <?php 
+        <?php
           if($this->session->userdata('si_idrole')==3){
             $disabled = "";
-          } elseif ($this->session->userdata('si_idrole')==4) {
+          } else {
             $disabled = "disabled";
-          } 
+          }
         ?>
-        <h3 class="box-title">Data Konsultasi</h3> <a href="<?php echo base_url('infokom/konsultasi/baru') ?>"><button <?php echo $disabled ?> class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan"><i class="fa fa-plus" style="margin-right:5px"></i>Konsultasi Baru</button></a>
+        <h3 class="box-title">Data Konsultasi</h3>
+        <a href="<?php echo base_url('infokom/konsultasi/baru') ?>"><button <?php echo $disabled ?> class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan"><i class="fa fa-plus" style="margin-right:5px"></i>Konsultasi Baru</button></a>
       </div>
       <div class="box-body" style="overflow-x:auto;">
         <table class="table table-responsive table-striped table-bordered table-hover text-left" >
@@ -42,7 +43,7 @@
               <th>Jenis Konsultasi</th>
               <th>Status</th>
               <?php if($this->session->userdata('si_idrole')==3){
-                echo "<th>Action</th>";  
+                echo "<th>Action</th>";
               } ?>
             </tr>
           </thead>
@@ -123,7 +124,7 @@
                     <label>Role</label>
                     <select required="" name="id_role" class="form-control">
                       <option value="">- Select Role -</option>
-                        
+
                     </select>
                   </div>
                 </div>
@@ -137,7 +138,7 @@
       <!--/.Content-->
     </div>
   </div>
-  
+
 
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url('assets/Styling/plugins/jQuery/jquery-2.2.3.min.js') ?>"></script>

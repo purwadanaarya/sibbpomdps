@@ -61,7 +61,7 @@
             <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <?php } elseif ($this->session->userdata('si_idrole')==2){ ?>
+      <?php } elseif ($this->session->userdata('si_idrole')==0){ ?>
         <div class="col-sm-3">
           <div class="small-box bg-aqua">
             <div class="inner">
@@ -141,7 +141,7 @@
             <a href="<?php echo base_url('infokom/konsultasi') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <?php } elseif ($this->session->userdata('si_idrole')==4) { ?>
+      <?php } elseif (($this->session->userdata('si_idrole')==4) || ($this->session->userdata('si_idrole')==2)) { ?>
           <!-- pangan -->
         <div class="col-md-12"><h3><b>Pangan</b></h3></div>
         <div class="col-sm-4">
@@ -154,7 +154,7 @@
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
-            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('home/detail?id=1&status=Tidak Terbit') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-sm-4">
@@ -167,7 +167,7 @@
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
-            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('home/detail?id=1&status=Belum Terbit') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-sm-4">
@@ -180,7 +180,7 @@
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
-            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('home/detail?id=1&status=Terbit') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -196,7 +196,7 @@
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
-            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('home/detail?id=2&status=Tidak Terbit') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-sm-4">
@@ -209,7 +209,7 @@
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
-            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('home/detail?id=2&status=Belum Terbit') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-sm-4">
@@ -222,7 +222,7 @@
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
-            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('home/detail?id=2&status=Terbit') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -238,7 +238,7 @@
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
-            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('home/detail?id=3&status=Tidak Terbit') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-sm-4">
@@ -251,7 +251,7 @@
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
-            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('home/detail?id=3&status=Belum Terbit') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-sm-4">
@@ -264,7 +264,7 @@
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
-            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('home/detail?id=3&status=Terbit') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -280,7 +280,7 @@
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
-            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('home/detail?id=4&status=Tidak Terbit') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-sm-4">
@@ -293,7 +293,7 @@
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
-            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('home/detail?id=4&status=Belum Terbit') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-sm-4">
@@ -306,7 +306,7 @@
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
-            <a href="" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('home/detail?id=4&status=Terbit') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <?php } ?>
