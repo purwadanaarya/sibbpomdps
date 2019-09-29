@@ -53,13 +53,12 @@
                 <td><?php echo $key->tlp_sarana ?></td>
                 <td><?php echo "$key->kategori, $key->detail_kategori - $key->detail_produk" ?></td>
                 <td><?php echo $key->status_dokumen ?></td>
-                <?php if($this->session->userdata('si_idrole')==4){ ?>
                 <td width="14%">
                   <a href="" data-toggle="modal" data-target="#modal_edit<?php echo $key->id_data;?>"><button class="btn btn-success"><i class="fa fa-eye"></i></button></a>
+                  <?php if($this->session->userdata('si_idrole')==4){ ?>
                   <a href="<?php base_url() ?>sertifikasi/edit/<?php echo $key->id_data ?>"><button class="btn btn-primary"><i class="fa fa-edit"></i></button></a>
-                  <button class="btn btn-success" type="button"><i class="fa fa-eye"></i></button>
+                  <?php } ?>
                 </td>
-                <?php } ?>
               </tr>
             <?php endforeach ?>
           </tbody>
@@ -80,6 +79,13 @@
             $nama=$i->nama_konsumen;
             $id_role=$i->nama_konsumen;
         ?>
+        <?php foreach ($petugas->result() as $key): ?>
+        <?php  if($key->id_user==$i->petugas_1){
+            $petugasdetail1=$key->nama;
+          } elseif($key->id_user==$i->petugas_2){
+            $petugasdetail2=$key->nama;
+          } ?>
+        <?php endforeach; ?>
   <div class="modal fade" id="modal_edit<?php echo $id_user;?>"  tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <!--Content-->
@@ -97,19 +103,108 @@
               <div class="col-xs-12 table-responsive" id="form_add_kegiatan">
                 <table id="tb_modal" class="table table-striped">
                   <tr>
-                    <td width="20%">Nama</td>
-                    <td>:</td>
-                    <td>Arya</td>
+                    <td colspan='3'><center><b>Detail Perusahaan</b></center></td>
                   </tr>
                   <tr>
-                    <td>Nama</td>
+                    <td width="30%">Nama</td>
                     <td>:</td>
-                    <td>Arya</td>
+                    <td><?php echo $i->nama_konsumen ?></td>
                   </tr>
                   <tr>
-                    <td>Nama</td>
+                    <td>Alamat</td>
                     <td>:</td>
-                    <td>Arya</td>
+                    <td><?php echo $i->alamat_sarana ?></td>
+                  </tr>
+                  <tr>
+                    <td>Telepon</td>
+                    <td>:</td>
+                    <td><?php echo $i->tlp_sarana ?></td>
+                  </tr>
+                  <tr>
+                    <td>Email</td>
+                    <td>:</td>
+                    <td><?php echo $i->email ?></td>
+                  </tr>
+                  <tr>
+                    <td>Jenis Perusahaan</td>
+                    <td>:</td>
+                    <td><?php echo $i->jenis_sarana ?></td>
+                  </tr>
+                  <tr>
+                    <td>Detail Jenis Perusahaan</td>
+                    <td>:</td>
+                    <td><?php echo $i->detail_jenis_sarana ?></td>
+                  </tr>
+                  <tr>
+                    <td colspan='3'><center><b>Detail Produk</b></center></td>
+                  </tr>
+                  <tr>
+                    <td>Kategori Produk</td>
+                    <td>:</td>
+                    <td><?php echo $i->kategori ?></td>
+                  </tr>
+                  <tr>
+                    <td>Detail Kategori</td>
+                    <td>:</td>
+                    <td><?php echo $i->detail_kategori ?></td>
+                  </tr>
+                  <tr>
+                    <td>Detail Produk</td>
+                    <td>:</td>
+                    <td><?php echo $i->detail_produk ?></td>
+                  </tr>
+                  <tr>
+                    <td colspan='3'><center><b>Detail Sertifikasi</b></center></td>
+                  </tr>
+                  <tr>
+                    <td>Tanggal Surat Terima</td>
+                    <td>:</td>
+                    <td><?php echo $i->tgl_surat_terima ?></td>
+                  </tr>
+                  <tr>
+                    <td>Tindak Lanjut</td>
+                    <td>:</td>
+                    <td><?php echo $i->tindak_lanjut ?></td>
+                  </tr>
+                  <tr>
+                    <td>Petugas 1</td>
+                    <td>:</td>
+                    <td><?php echo $petugasdetail1 ?></td>
+                  </tr>
+                  <tr>
+                    <td>Petugas 2</td>
+                    <td>:</td>
+                    <td><?php echo $petugasdetail2 ?></td>
+                  </tr>
+                  <tr>
+                    <td>Tanggal Audit</td>
+                    <td>:</td>
+                    <td><?php echo $i->tanggal_audit.' - '.$i->tanggal_audit_selesai ?></td>
+                  </tr>
+                  <tr>
+                    <td>Batas Waktu Perbaikan</td>
+                    <td>:</td>
+                    <td><?php echo $i->batas_waktu_perbaikan ?></td>
+                  </tr>
+                  <tr>
+                    <td>Tanggal Perbaikan</td>
+                    <td>:</td>
+                    <td><?php echo $i->tanggal_perbaikan ?></td>
+                  </tr>
+                  <tr>
+                    <td>Keterangan</td>
+                    <td>:</td>
+                    <td><?php echo $i->keterangan ?></td>
+                  </tr>
+                  <tr>
+                    <td>Tanggal Terbit Rekomendasi</td>
+                    <td>:</td>
+                    <td><?php echo $i->terbit_rekomendasi ?></td>
+                  </tr>
+                  <tr>
+                    <td>Status Dokumen</td>
+                    <td>:</td>
+                    <td><?php echo $i->status_dokumen ?></td>
                   </tr>
                 </table>
               </div>
