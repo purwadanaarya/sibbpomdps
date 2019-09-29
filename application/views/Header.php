@@ -20,7 +20,7 @@
 
   <link rel="stylesheet" href="<?php echo base_url('assets/Styling/plugins/datatables/dataTables.bootstrap.css') ?>">
   <!-- Latest compiled and minified CSS -->
-  
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.7/dist/css/bootstrap-select.min.css">
 <link href="<?php echo base_url('assets/sign/css/jquery.signaturepad.css') ?>" rel="stylesheet">
 
@@ -95,17 +95,30 @@
         </div>
       </div>
       <ul class="sidebar-menu" data-widget="tree">
+        <li class="header"><center>Periode</center></li>
+        <form action="<?php echo base_url('Home/') ?>" method="post" class="sidebar-form">
+          <div class="input-group">
+            <input type="number" class="form-control" id="periode" name="periode" placeholder="periode" value="2019">
+            <span class="input-group-btn">
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+        </form>
+      </ul>
+      <ul class="sidebar-menu" data-widget="tree">
         <li class="header"><center>MAIN MENU</center></li>
         <li class="" id='btn_beranda'>
           <a href="<?php echo base_url('home') ?>">
             <i class="fa fa-dashboard"></i> <span>Beranda</span>
           </a>
         </li>
-          <!-- 
+          <!--
           1 = admin
           2 = struktural
           3 = infokom
-          4 = sertifikasi 
+          4 = sertifikasi
           -->
           <?php if($this->session->userdata('si_idrole')==1){ ?>
             <li class="" id='btn_admin_user'>
@@ -158,7 +171,7 @@
                 <i class="fa fa-list"></i> <span>Sertifikasi</span>
               </a>
             </li>
-          <?php } ?>  
+          <?php } ?>
       </ul>
       <!-- search form -->
 
