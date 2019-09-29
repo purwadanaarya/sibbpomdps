@@ -34,9 +34,9 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <b>SI KONSER</b>
+      <b>Sistem Informasi</b>
     </div>
-    
+
     <?php if ($this->session->flashdata('error')): ?>
       <div class="callout callout-danger lead">
         <h4>Gagal Sign In !</h4>
