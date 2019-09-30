@@ -95,7 +95,7 @@
         </div>
       </div>
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header"><center>Periode</center></li>
+        <li class="header"><center>PERIODE</center></li>
         <form action="<?php echo base_url('Home/') ?>" method="post" class="sidebar-form">
           <div class="input-group">
             <input type="number" class="form-control" id="periode" name="periode" placeholder="periode" value="<?php echo $this->session->userdata('periode') ?>">
