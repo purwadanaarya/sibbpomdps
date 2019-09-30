@@ -35,7 +35,7 @@
         <table class="table table-responsive table-striped table-bordered table-hover text-left" >
           <thead>
             <tr>
-              <th>Tanggal</th>
+              <th>Tanggal Konsultasi</th>
               <th>Nama Konsumen</th>
               <th>Nama & Alamat</th>
               <th>No Tlp</th>

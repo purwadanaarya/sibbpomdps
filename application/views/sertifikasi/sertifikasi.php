@@ -33,7 +33,7 @@
         <table id="tb_data" class="table table-responsive table-striped table-bordered table-hover text-left" >
           <thead>
             <tr>
-              <th>Tanggal</th>
+              <th>Tanggal Surat Terima</th>
               <th>Nama Konsumen</th>
               <th>Nama & Alamat</th>
               <th>No Tlp</th>
@@ -47,7 +47,7 @@
           <tbody class="">
             <?php foreach ($sertifikasi->result() as $key): ?>
               <tr>
-                <td><?php echo $key->tgl_konsultasi ?></td>
+                <td><?php echo $key->tgl_surat_terima ?></td>
                 <td><?php echo $key->nama_konsumen ?></td>
                 <td><?php echo "$key->nama_sarana - $key->alamat_sarana" ?></td>
                 <td><?php echo $key->tlp_sarana ?></td>

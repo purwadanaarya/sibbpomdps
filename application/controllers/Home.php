@@ -7,21 +7,6 @@ class Home extends CI_Controller {
 		parent::__construct();
 	}
 
-	// public function index()
-	// {
-	// 	$username = $this->session->userdata('username');
-	// 	$this->db->where('username', $username);
-	// 	$data['total'] = $this->db->get('tb_kegiatan')->num_rows();
-
-	// 	$max = date('Y').'-'.date('m').'-31';
-	// 	$min = date('Y').'-'.date('m').'-01';
-	// 	$this->db->where('tb_kegiatan.tgl BETWEEN "'. date('Y-m-d', strtotime($min)). '" and "'. date('Y-m-d', strtotime($max)).'"');
-	// 	$this->db->where('username', $username);
-	// 	$data['jumlah_tanggal'] = $this->db->get('tb_kegiatan')->num_rows();
-
-	// 	$this->load->view('Header');
-	// 	$this->load->view('Beranda',$data);
-	// }
 	public function index(){
 		if ($this->input->post('periode')) {
 			$periode = $this->input->post('periode');
