@@ -27,7 +27,8 @@ class User extends CI_Controller {
 				'si_username' => $hasil[0]->username,
 				'si_nama'=>$hasil[0]->nama,
 				'si_idrole'=>$hasil[0]->id_role,
-				'si_role'=>$hasil[0]->role,	
+				'si_role'=>$hasil[0]->role,
+				'periode'=>date('Y'),
 			];
 			$this->session->set_userdata($arr_session);
 			redirect('home');

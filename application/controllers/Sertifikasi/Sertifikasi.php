@@ -19,6 +19,7 @@ class Sertifikasi extends CI_Controller {
 		$this->db->join('tb_jenis_sarana', 'tb_jenis_sarana.id_jenis_sarana = tb_sarana.id_jenis_sarana');
 		$this->db->join('tb_detail_jenis_sarana', 'tb_detail_jenis_sarana.id_detail_jenis_sarana = tb_sarana.id_detail_jenis_sarana');
 		$this->db->where('status !=', 'Konsultasi');
+		$this->M_data->periode();
 		$data['sertifikasi'] = $this->db->get('tb_data');
 		$this->db->where('id_role', '4');
 		$data['petugas']=$this->db->get('tb_user');

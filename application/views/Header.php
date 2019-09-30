@@ -94,20 +94,11 @@
           <a href="#"><i class="fa fa-circle text-success"></i> <?php echo "BBPOM di Denpasar" ?></a>
         </div>
       </div>
-      <?php
-        $tahun = $this->db->query('SELECT year(tgl_surat_terima) as year FROM tb_data GROUP BY year')->result_array();
-      ?>
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header"><center>Periode</center></li>
         <form action="<?php echo base_url('Home/') ?>" method="post" class="sidebar-form">
           <div class="input-group">
-            <select class='form-control'>
-              <option value="1">Semua Tahun</option>
-              <?php foreach ($tahun as $key): ?>
-                <option value="<?php echo $key['year'] ?>"><?php echo $key['year'] ?></option>
-              <?php endforeach; ?>
-            </select>
-            <!-- <input type="number" class="form-control" id="periode" name="periode" placeholder="periode" value="2019"> -->
+            <input type="number" class="form-control" id="periode" name="periode" placeholder="periode" value="<?php echo $this->session->userdata('periode') ?>">
             <span class="input-group-btn">
               <button type="submit" name="search" id="search-btn" class="btn btn-flat">
                 <i class="fa fa-search"></i>

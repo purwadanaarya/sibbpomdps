@@ -15,6 +15,7 @@ class Konsultasi extends CI_Controller {
 		$this->db->join('tb_detail_kategori', 'tb_detail_kategori.id_detail_kategori = tb_data.id_detail_kategori');
 		$this->db->join('tb_jeniskonsultasi', 'tb_jeniskonsultasi.id_jeniskonsultasi = tb_data.id_jeniskonsultasi');
 		$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
+		$this->M_data->periode();
 		$data['konsultasi'] = $this->db->get('tb_data');
 		$this->load->view('header');
 		$this->load->view('infokom/Konsultasi',$data);
