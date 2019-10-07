@@ -132,6 +132,8 @@
           <div class="small-box bg-aqua">
             <div class="inner">
               <h3><?php echo $jumlah_sarana ?></h3>
+
+              
               <p>Jumlah Perusahaan</p>
             </div>
             <div class="icon">
