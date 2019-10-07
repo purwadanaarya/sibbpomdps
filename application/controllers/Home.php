@@ -11,6 +11,7 @@ class Home extends CI_Controller {
 		if ($this->input->post('periode')) {
 			$periode = $this->input->post('periode');
 			$this->session->set_userdata('periode',$periode);
+			redirect($this->input->post('last_link'));
 		}
 		if($this->session->userdata('si_username')==''){
 			redirect('user');
