@@ -31,10 +31,10 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url('<?php echo base_url("img/bg.jpg"); ?>'); background-size: 100% 100%; height: 100%; overflow: hidden;">
   <div class="login-box">
-    <div class="login-logo">
-      <b>Sistem Informasi</b>
+    <div class="login-logo" style="padding-top: 50% ;color: white;-webkit-text-stroke: 1px black;">
+      <b></b>
     </div>
 
     <?php if ($this->session->flashdata('error')): ?>
@@ -47,7 +47,7 @@
     <div class="login-box-body">
 
 
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg"><b>Sistem Informasi</b><br>Balai Besar POM di Denpasar</p>
 
       <form action="<?php echo base_url('user/login') ?>" method="post">
         <div class="form-group has-feedback">

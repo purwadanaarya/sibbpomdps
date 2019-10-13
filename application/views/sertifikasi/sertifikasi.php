@@ -39,9 +39,7 @@
               <th>No Tlp</th>
               <th>Jenis Produk</th>
               <th>Status</th>
-              <?php if($this->session->userdata('si_idrole')==4){ ?>
-                <th>Action</th>
-              <?php } ?>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody class="">

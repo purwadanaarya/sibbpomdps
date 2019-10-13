@@ -145,13 +145,13 @@
       <?php } elseif (($this->session->userdata('si_idrole')==4) || ($this->session->userdata('si_idrole')==2)) { ?>
           <!-- pangan -->
         <div class="col-sm-12">
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-yellow">
             <div class="inner">
               <h3>Tahun : <?php echo $this->session->userdata('periode'); ?></h3>
             </div>
             <div class="icon">
             </div>
-          </div>
+          </div>  
         </div>
         <div class="col-sm-6">
           <div class="small-box bg-green">
@@ -196,12 +196,12 @@
           </div>
         </div>  
         <div class="col-sm-6">
-          <div class="small-box bg-yellow">
+          <div class="small-box" style="background-color: indigo">
             <div class="inner">
-              <h3>Obat</h3>
-              <h4><a href="<?php echo base_url('home/detail?id=4&status=Terbit') ?>"><font color="#ffffff">Aspek Pemenuhan CPOT Terbit : <b><?php echo $obat_terbit ?></b></font></a></h4>
-              <h4><a href="<?php echo base_url('home/detail?id=4&status=Belum Terbit') ?>"><font color="#ffffff">Aspek Pemenuhan CPOT Belum Terbit : <b><?php echo $obat_belum ?></b></font></a></h4>
-              <h4><a href="<?php echo base_url('home/detail?id=4&status=Tidak Terbit') ?>"><font color="#ffffff">Aspek Pemenuhan CPOT Tidak Terbit : <b><?php echo $obat_tidak ?></b></font></a></h4>
+              <h3 style="color:white">Obat</h3>
+              <h4><a href="<?php echo base_url('home/detail?id=4&status=Terbit') ?>"><font color="#ffffff">Sertifikat CDOB Terbit : <b><?php echo $obat_terbit ?></b></font></a></h4>
+              <h4><a href="<?php echo base_url('home/detail?id=4&status=Belum Terbit') ?>"><font color="#ffffff">Sertifikat CDOB Belum Terbit : <b><?php echo $obat_belum ?></b></font></a></h4>
+              <h4><a href="<?php echo base_url('home/detail?id=4&status=Tidak Terbit') ?>"><font color="#ffffff">Sertifikat CDOB Tidak Terbit : <b><?php echo $obat_tidak ?></b></font></a></h4>
 
             </div>
             <div class="icon">

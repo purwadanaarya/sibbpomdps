@@ -58,7 +58,7 @@
                 <td><?php echo $key->jeniskonsultasi ?></td>
                 <td><?php echo $key->status ?></td>
                 <?php if($this->session->userdata('si_idrole')==3){ ?>
-                <td width="10%"><center><a href="" data-toggle="modal" data-target="#modal_edit<?php echo $key->id_data;?>"><button class="btn btn-primary"><i class="fa fa-edit"></i></button></a> <?=anchor("infokom/konsultasi/delete".$key->id_data,"<button class='btn btn-danger'><i class='fa fa-trash'></i></button",array('onclick' => "return confirm('Konsultasi $key->tgl_konsultasi atas nama $key->nama_konsumen akan dihapus. Apa anda yakin?')"))?></center></td>
+                <td width="10%"><center><?=anchor("infokom/konsultasi/delete".$key->id_data,"<button class='btn btn-danger'><i class='fa fa-trash'></i></button",array('onclick' => "return confirm('Konsultasi $key->tgl_konsultasi atas nama $key->nama_konsumen akan dihapus. Apa anda yakin?')"))?></center></td>
                 <?php } ?>
               </tr>
             <?php endforeach ?>
@@ -78,67 +78,6 @@
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
-  <div class="modal fade" id="modal_tambah" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <!--Content-->
-      <div class="modal-content">
-        <!--Header-->
-        <div class="modal-header" style="background-color: #367fa9;">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 id="header_modal" class="modal-title" style="color:white"><i class="fa fa-plus" style="margin-right:5px"></i>Create New User</h4>
-        </div>
-
-        <!--Body-->
-        <div class="modal-body">
-          <div class="" id="form_add">
-            <form method="post" action="<?php echo base_url('admin/user/add') ?>">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" name="username" placeholder="Username" required>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Password" required>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" name="nama" placeholder="Full Name" required>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Role</label>
-                    <select required="" name="id_role" class="form-control">
-                      <option value="">- Select Role -</option>
-
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <button class="btn btn-primary btn-block" type="submit" name="button"><i class="fa fa-paper-plane-o"></i>   Kirim</button>
-            </form>
-          </div>
-        </div>
-        <!--Footer-->
-      </div>
-      <!--/.Content-->
-    </div>
-  </div>
-
 
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url('assets/Styling/plugins/jQuery/jquery-2.2.3.min.js') ?>"></script>
