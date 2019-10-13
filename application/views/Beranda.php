@@ -196,7 +196,7 @@
           </div>
         </div>  
         <div class="col-sm-6">
-          <div class="small-box" style="background-color: indigo">
+          <div class="small-box bg-navy">
             <div class="inner">
               <h3 style="color:white">Obat</h3>
               <h4><a href="<?php echo base_url('home/detail?id=4&status=Terbit') ?>"><font color="#ffffff">Sertifikat CDOB Terbit : <b><?php echo $obat_terbit ?></b></font></a></h4>
