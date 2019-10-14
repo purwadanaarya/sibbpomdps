@@ -103,6 +103,16 @@ class Sertifikasi extends CI_Controller {
 		redirect($redir);
 	}
 
+	public function tambah()
+	{
+		$data['jenis_konsultasi'] = $this->db->get('tb_jeniskonsultasi');
+		$data['sarana'] 		  = $this->db->get('tb_sarana');
+		$data['kategori'] 		  = $this->db->get('tb_kategori');
+		$data['jenis_sarana']	  = $this->db->get('tb_jenis_sarana')->result();
+		$data['kabupaten']		  = $this->db->get('tb_kabupaten');
+		$this->load->view('header');
+		$this->load->view('infokom/new_konsultasi',$data);
+	}
 }
 
 /* End of file Sertifikasi.php */

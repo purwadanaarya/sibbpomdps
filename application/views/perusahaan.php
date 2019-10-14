@@ -22,7 +22,10 @@
       <div class="box-header with-border">
         <!-- <h3 class="box-title">Users</h3> <button class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan" id='btn_tambah'><i class="fa fa-plus" style="margin-right:5px"></i>Create New</button> -->
         <h3 class="box-title">Data Perusahaan</h3>
+        <?php if($this->session->userdata('si_idrole')==2){ ?>
+        <?php } else { ?>
         <a href="<?php echo base_url('perusahaan/tambah_perusahaan') ?>"><button class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan"><i class="fa fa-plus" style="margin-right:5px"></i>Tambah Data</button></a>
+        <?php } ?>
       </div>
       <div class="box-body" style="overflow-x:auto;">
         <table class="table table-responsive table-striped table-bordered table-hover text-left" >
@@ -30,23 +33,29 @@
             <tr>
               <th>Nama</th>
               <th>Alamat</th>
-              <th>Kabupaten</th>
               <th>Telepon</th>
               <th>Email</th>
-              <th>Jenis Sarana</th>
-              <th>Detail Jenis Sarana</th>
+              <th>Jenis Perusahaan</th>
+              <th>Detail Jenis Perusahaan</th>
+              <?php if($this->session->userdata('si_idrole')==2){ ?>
+              <?php } else { ?>
+              <th width="10%">Action</th>
+              <?php } ?>
             </tr>
           </thead>
           <tbody class="">
             <?php foreach ($sarana->result() as $key): ?>
               <tr>
                 <td><?php echo $key->nama_sarana ?></td>
-                <td><?php echo $key->alamat_sarana ?></td>
-                <td><?php echo $key->id_kabupaten ?></td>
+                <td><?php echo $key->alamat_sarana ?>, <?php echo $key->kabupaten ?></td>
                 <td><?php echo $key->tlp_sarana ?></td>
                 <td><?php echo $key->email ?></td>
                 <td><?php echo $key->jenis_sarana ?></td>
                 <td><?php echo $key->detail_jenis_sarana ?></td>
+                <?php if($this->session->userdata('si_idrole')==2){ ?>
+                <?php } else { ?>
+                <td><a href="<?php echo base_url('perusahaan/edit/').$key->id_sarana ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a><a href="<?php echo base_url('perusahaan/delete/').$key->id_sarana ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash"></i></a></td>
+                <?php } ?>
               </tr>
             <?php endforeach ?>
           </tbody>
@@ -57,75 +66,6 @@
   </div>
   <!-- /.content-wrapper -->
   <?php $this->load->view('Footer'); ?>
-
-  <!-- Control Sidebar -->
-
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
-</div>
-  <div class="modal fade" id="modal_tambah" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <!--Content-->
-      <div class="modal-content">
-        <!--Header-->
-        <div class="modal-header" style="background-color: #367fa9;">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 id="header_modal" class="modal-title" style="color:white"><i class="fa fa-plus" style="margin-right:5px"></i>Create New User</h4>
-        </div>
-
-        <!--Body-->
-        <div class="modal-body">
-          <div class="" id="form_add">
-            <form method="post" action="<?php echo base_url('admin/user/add') ?>">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" name="username" placeholder="Username" required>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Password" required>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" name="nama" placeholder="Full Name" required>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Role</label>
-                    <select required="" name="id_role" class="form-control">
-                      <option value="">- Select Role -</option>
-
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <button class="btn btn-primary btn-block" type="submit" name="button"><i class="fa fa-paper-plane-o"></i>   Kirim</button>
-            </form>
-          </div>
-        </div>
-        <!--Footer-->
-      </div>
-      <!--/.Content-->
-    </div>
-  </div>
-
 
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url('assets/Styling/plugins/jQuery/jquery-2.2.3.min.js') ?>"></script>
@@ -138,15 +78,10 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $('#judul').text('SI KONSER');
-    $('#btn_konsultasi').addClass('active');
+    $('#btn_perusahaan').addClass('active');
     $('.table').DataTable({
        aaSorting: [[0, 'desc']]
     });
-  });
-  $('#btn_tambah').click(function(event) {
-    $('#header_modal').html('<i class="fa fa-plus" style="margin-right:5px"></i> New Konsultasi');
-    $('#form_add').attr('hidden', false);
-    $('#modal_tambah').modal('show');
   });
 
 </script>

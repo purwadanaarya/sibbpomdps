@@ -21,26 +21,28 @@
     <div class="box box-solid box-primary">
     <div class="box-header with-border">
       <!-- <h3 class="box-title">Users</h3> <button class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan" id='btn_tambah'><i class="fa fa-plus" style="margin-right:5px"></i>Create New</button> -->
-      <h3 class="box-title">Tambah Data Perusahaan</h3>
+      <h3 class="box-title">Edit Data Perusahaan</h3>
     </div>
     <div class="box-body" style="overflow-x:auto;" width="100%">
-      <form action="<?php echo base_url('perusahaan/add') ?>" method="post">
+        <?php foreach ($sarana->result() as $key): ?>
+      <form action="<?php echo base_url('perusahaan/edit_process/').$key->id_sarana ?>" method="post">
+          
         <div class="col-md-12">
           <div class="form-group">
             <label>Nama Perusahaan</label>
-            <input class="form-control" value="" placeholder="Nama Perusahaan" type="text" name="nama_perusahaan" required="">
+            <input class="form-control" value="<?php echo $key->nama_sarana ?>" placeholder="Nama Perusahaan" type="text" name="nama_perusahaan" required="">
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group">
             <label>Telepon Perusahaan</label>
-            <input class="form-control" value="" placeholder="Telepon Perusahaan" type="number" required="" name="telepon_perusahaan">
+            <input class="form-control" value="<?php echo $key->tlp_sarana ?>" placeholder="Telepon Perusahaan" type="number" required="" name="telepon_perusahaan">
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group">
             <label>Alamat Perusahaan</label>
-            <textarea rows="3" class="form-control" value="" placeholder="Alamat Perusahaan" type="text" required="" name="alamat_perusahaan"></textarea> 
+            <textarea rows="3" class="form-control" value="" placeholder="Alamat Perusahaan" type="text" required="" name="alamat_perusahaan"><?php echo $key->alamat_sarana ?></textarea> 
           </div>
         </div>
         <div class="col-md-12">
@@ -48,8 +50,12 @@
             <label>Kabupaten Perusahaan</label>
             <select class="form-control" required="" name="kabupaten">
               <option value="">- Pilih Kabupaten -</option>
-              <?php foreach ($kabupaten->result() as $key): ?>
-                <option value="<?php echo $key->id_kabupaten ?>"><?php echo $key->kabupaten ?></option>
+              <?php foreach ($kabupaten->result() as $i): ?>
+                <?php if ($key->id_kabupaten==$i->id_kabupaten){ ?>
+                <option selected value="<?php echo $i->id_kabupaten ?>"><?php echo $i->kabupaten ?></option>  
+                <?php } else { ?>
+                <option value="<?php echo $i->id_kabupaten ?>"><?php echo $i->kabupaten ?></option>
+                <?php } ?>
               <?php endforeach; ?>
             </select>
           </div>
@@ -57,7 +63,7 @@
         <div class="col-md-12">
           <div class="form-group">
             <label>Email Perusahaan</label>
-            <input class="form-control" value="" required="" placeholder="Email Perusahaan" type="email" name="email_perusahaan">
+            <input class="form-control" value="<?php echo $key->email ?>" required="" placeholder="Email Perusahaan" type="email" name="email_perusahaan">
           </div>
         </div>
         <div class="col-md-12">
@@ -65,8 +71,8 @@
             <label>Jenis Perusahaan</label>
             <select class="form-control" name="jenis_sarana" id="jenis_sarana" required>
               <option value="">- Pilih Jenis Perusahaan -</option>
-              <?php foreach ($jenis_sarana as $key): ?>
-                <option value="<?php echo $key->id_jenis_sarana ?>"><?php echo $key->jenis_sarana ?></option>
+              <?php foreach ($jenis_sarana as $i): ?>
+                <option value="<?php echo $i->id_jenis_sarana ?>"><?php echo $i->jenis_sarana ?></option>
               <?php endforeach ?>
             </select>
           </div>
@@ -84,6 +90,7 @@
             <button class="btn btn-primary btn-block"><i class="fa fa-paper-plane-o"></i> Submit</button>
           </div>
         </div>
+        <?php endforeach ?>
       </form>
     </div>
   </div>

@@ -33,7 +33,7 @@
 </head>
 <body class="hold-transition login-page" style="background-image: url('<?php echo base_url("img/bg.jpg"); ?>'); background-size:100% 100%; height: 100%; overflow: hidden;">
   <div class="login-box">
-    <div class="login-logo" style="padding-top: 50% ;color: white;-webkit-text-stroke: 1px black;">
+    <div class="login-logo" style="padding-top:35% ;color: white;-webkit-text-stroke: 1px black;">
       <b></b>
     </div>
 

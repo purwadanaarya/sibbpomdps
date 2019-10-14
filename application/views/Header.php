@@ -173,6 +173,11 @@
               </a>
             </li>
           <?php } ?>
+            <li class="" id='btn_perusahaan'>
+              <a href="<?php echo base_url('perusahaan') ?>">
+                <i class="fa fa-building"></i> <span>Perusahaan</span>
+              </a>
+            </li>
       </ul>
       <!-- search form -->
 
