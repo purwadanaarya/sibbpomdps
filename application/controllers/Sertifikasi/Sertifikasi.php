@@ -119,6 +119,18 @@ class Sertifikasi extends CI_Controller {
 		$redir = 'sertifikasi/sertifikasi/edit/'.$insert_id;
 		redirect($redir);
 	}
+	public function edit_kategori()
+	{
+		$id_data = $this->input->post('id_data');
+		$update = array(
+			'id_kategori'=> $this->input->post('kategori'),
+			'id_detail_kategori' =>$this->input->post('detail_kategori'),
+			'detail_produk' =>$this->input->post('detail_produk')
+		);
+		$this->db->where('id_data', $id_data);
+		$this->db->update('tb_data', $update);
+		redirect('sertifikasi/sertifikasi');
+	}
 }
 
 /* End of file Sertifikasi.php */
