@@ -13,111 +13,168 @@
     </div>
   <?php endif; ?>
         <h1>
-          <i class="fa fa-list"></i> Data Sertifikasi
+          <i class="fa fa-file"></i> Tambah Data Sertifikasi
         </h1>
   </section>
   <!-- Main content -->
   <section class="content">
-    <div class="box box-solid box-primary">
-    <div class="box-header with-border">
-      <!-- <h3 class="box-title">Users</h3> <button class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan" id='btn_tambah'><i class="fa fa-plus" style="margin-right:5px"></i>Create New</button> -->
-      <h3 class="box-title">Data Sertifikasi</h3>
-    </div>
-    <div class="box-body" style="overflow-x:auto;" width="100%">
-      <form action="<?php echo base_url('sertifikasi/sertifikasi/baru_process') ?>" method="post">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Nama Konsumen</label>
-            <input class="form-control" value="" placeholder="Nama Konsumen" type="text" name="nama_konsumen" required="">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Nama Perusahaan</label>
-            <input class="form-control" value="" placeholder="Nama Perusahaan" type="text" name="nama_perusahaan" required="">
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Telepon Perusahaan</label>
-            <input class="form-control" value="" placeholder="Telepon Perusahaan" type="number" required="" name="telepon_perusahaan">
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Alamat Perusahaan</label>
-            <input class="form-control" value="" placeholder="Alamat Perusahaan" type="text" required="" name="alamat_perusahaan">
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Kabupaten Perusahaan</label>
-            <select class="form-control" required="" name="kabupaten">
-              <option value="">- Pilih Kabupaten -</option>
-              <?php foreach ($kabupaten->result() as $key): ?>
-                <option value="<?php echo $key->id_kabupaten ?>"><?php echo $key->kabupaten ?></option>
-              <?php endforeach; ?>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Email Perusahaan</label>
-            <input class="form-control" value="" required="" placeholder="Email Perusahaan" type="email" name="email_perusahaan">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Jenis Perusahaan</label>
-            <select class="form-control" name="jenis_sarana" id="jenis_sarana" required>
-              <option value="">- Pilih Jenis Perusahaan -</option>
-              <?php foreach ($jenis_sarana->result() as $key): ?>
-                <option value="<?php echo $key->id_jenis_sarana ?>"><?php echo $key->jenis_sarana ?></option>
-              <?php endforeach; ?>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Detail Jenis Perusahaan</label>
-            <select class="form-control" name="detail_jenis_sarana" id="detail_jenis_sarana" required>
-                <option value="">- Pilih Detail Jenis Perusahaan -</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Kategori Produk</label>
-            <select required="" name="kategori" class="form-control" id="kategori_produk">
-              <option value="">- Pilih Kategori Produk -</option>
-              <?php foreach ($kategori->result() as $key): ?>
-                <option value="<?php echo $key->id_kategori ?>"><?php echo "$key->kategori" ?></option>
-              <?php endforeach ?>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Detail Kategori Produk</label>
-            <select required="" name="detail_kategori" class="form-control" id="detail_kategori_produk">
-              <option value="">- Pilih Detail Kategori Produk -</option>
-
-            </select>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Deskripsi Produk</label>
-            <input class="form-control" value="" placeholder="Deskripsi Produk" type="text" required="" name="detail_produk">
-          </div>
-        </div>
+    <!-- START CUSTOM TABS -->
+      <div class="row">
         <div class="col-md-12">
-          <div class="form-group">
-            <button class="btn btn-primary btn-block"><i class="fa fa-paper-plane-o"></i> Next</button>
+          <!-- Custom Tabs -->
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active" style="width: 49%"><a href="#tab_1" data-toggle="tab"><b><center>Perusahaan Sudah Terdaftar</center></b></a></li>
+              <li style="width:50%"><a href="#tab_2" data-toggle="tab"><b><center>Perusahaan Belum Terdaftar</center></b></a></li>  
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab_1">
+                <div class="row">
+                  <form action="<?php echo base_url('sertifikasi/sertifikasi/tambah') ?>" method="post">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Nama Konsumen</label>
+                        <input class="form-control" placeholder="Nama Konsumen" type="text" name="nama_konsumen">
+                      </div>
+                      <div class="form-group">
+                        <label>Sarana</label>
+                          <select id="select_barang" class="selectpicker form-control" data-live-search="true" name="sarana">
+                            <option value="">- Pilih Sarana -</option>
+                            <?php foreach ($sarana->result() as $key): ?>
+                              <option value="<?php echo $key->id_sarana ?>"><?php echo "$key->nama_sarana - $key->alamat_sarana" ?></option>
+                            <?php endforeach ?>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Kategori Produk</label>
+                        <select required="" name="kategori" class="form-control" id="kategori_produk_1">
+                          <option value="">- Pilih Kategori Produk -</option>
+                          <?php foreach ($kategori->result() as $key): ?>
+                            <option value="<?php echo $key->id_kategori ?>"><?php echo "$key->kategori" ?></option>
+                          <?php endforeach ?>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Detail Kategori Produk</label>
+                        <select required="" name="detail_kategori" class="form-control" id="detail_kategori_produk_1">
+                          <option value="">- Pilih Kategori Produk -</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Deskripsi Produk</label>
+                        <input class="form-control" type="text" name="detail_produk" placeholder="Deskripsi Produk" required="">
+                      </div>
+                      <div class="form-group">
+                        <button class="btn btn-primary btn-block"><i class="fa fa-paper-plane-o"></i> Next</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_2">
+                <div class="row">
+                  <form action="<?php echo base_url('sertifikasi/sertifikasi/baru_process') ?>" method="post">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Nama Konsumen</label>
+                        <input class="form-control" value="" placeholder="Nama Konsumen" type="text" name="nama_konsumen" required="">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Nama Perusahaan</label>
+                        <input class="form-control" value="" placeholder="Nama Perusahaan" type="text" name="nama_perusahaan" required="">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Telepon Perusahaan</label>
+                        <input class="form-control" value="" placeholder="Telepon Perusahaan" type="number" required="" name="telepon_perusahaan">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Alamat Perusahaan</label>
+                        <input class="form-control" value="" placeholder="Alamat Perusahaan" type="text" required="" name="alamat_perusahaan">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Kabupaten Perusahaan</label>
+                        <select class="form-control" required="" name="kabupaten">
+                          <option value="">- Pilih Kabupaten -</option>
+                          <?php foreach ($kabupaten->result() as $key): ?>
+                            <option value="<?php echo $key->id_kabupaten ?>"><?php echo $key->kabupaten ?></option>
+                          <?php endforeach; ?>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Email Perusahaan</label>
+                        <input class="form-control" value="" required="" placeholder="Email Perusahaan" type="email" name="email_perusahaan">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Jenis Perusahaan</label>
+                        <select class="form-control" name="jenis_sarana" id="jenis_sarana" required>
+                          <option value="">- Pilih Jenis Perusahaan -</option>
+                          <?php foreach ($jenis_sarana->result() as $key): ?>
+                            <option value="<?php echo $key->id_jenis_sarana ?>"><?php echo $key->jenis_sarana ?></option>
+                          <?php endforeach; ?>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Detail Jenis Perusahaan</label>
+                        <select class="form-control" name="detail_jenis_sarana" id="detail_jenis_sarana" required>
+                            <option value="">- Pilih Detail Jenis Perusahaan -</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Kategori Produk</label>
+                        <select required="" name="kategori" class="form-control" id="kategori_produk">
+                          <option value="">- Pilih Kategori Produk -</option>
+                          <?php foreach ($kategori->result() as $key): ?>
+                            <option value="<?php echo $key->id_kategori ?>"><?php echo "$key->kategori" ?></option>
+                          <?php endforeach ?>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Detail Kategori Produk</label>
+                        <select required="" name="detail_kategori" class="form-control" id="detail_kategori_produk">
+                          <option value="">- Pilih Detail Kategori Produk -</option>
+
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Deskripsi Produk</label>
+                        <input class="form-control" value="" placeholder="Deskripsi Produk" type="text" required="" name="detail_produk">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <button class="btn btn-primary btn-block"><i class="fa fa-paper-plane-o"></i> Next</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
           </div>
+          <!-- nav-tabs-custom -->
         </div>
-      </form>
-    </div>
   </div>
   </section>
 </div>
@@ -171,6 +228,25 @@ $('#jenis_sarana').change(function(){
         for (var i = 0; i < data.length; i++) {
           console.log('hehe');
           $('#detail_jenis_sarana').append("<option class='pilihan_1' value='"+data[i].id_detail_jenis_sarana+"'>"+data[i].detail_jenis_sarana+"</option>");
+        }
+      }
+    });
+});
+$('#kategori_produk_1').change(function(){
+  var kategori_produk = $('#kategori_produk_1').val();
+  $.ajax({
+      dataType : 'JSON',
+      url: '<?php echo base_url('Infokom/Konsultasi/ajax_get_detail_kategori') ?>',
+      type: 'post',
+      data: {
+        id_kategori: kategori_produk
+      },
+      success: function (data) {
+        console.log(data);
+        $('.pilihan_2').remove();
+        for (var i = 0; i < data.length; i++) {
+          console.log('hehe');
+          $('#detail_kategori_produk_1').append("<option class='pilihan_2' value='"+data[i].id_detail_kategori+"'>"+data[i].detail_kategori+"</option>");
         }
       }
     });

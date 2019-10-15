@@ -23,6 +23,7 @@ class Sertifikasi extends CI_Controller {
 		$data['sertifikasi'] = $this->db->get('tb_data');
 		$this->db->where('id_role', '4');
 		$data['petugas']=$this->db->get('tb_user');
+		$data['kategori']=$this->db->get('tb_kategori');
 
 		$this->load->view('header');
 		$this->load->view('sertifikasi/sertifikasi',$data);
@@ -68,6 +69,7 @@ class Sertifikasi extends CI_Controller {
 	public function baru()
 	{
 		//$this->db->get('', limit, offset);
+		$data['sarana']=$this->db->get('tb_sarana');
 		$data['kabupaten']=$this->db->get('tb_kabupaten');
 		$data['kategori']=$this->db->get('tb_kategori');
 		$data['jenis_sarana']=$this->db->get('tb_jenis_sarana');
@@ -105,13 +107,17 @@ class Sertifikasi extends CI_Controller {
 
 	public function tambah()
 	{
-		$data['jenis_konsultasi'] = $this->db->get('tb_jeniskonsultasi');
-		$data['sarana'] 		  = $this->db->get('tb_sarana');
-		$data['kategori'] 		  = $this->db->get('tb_kategori');
-		$data['jenis_sarana']	  = $this->db->get('tb_jenis_sarana')->result();
-		$data['kabupaten']		  = $this->db->get('tb_kabupaten');
-		$this->load->view('header');
-		$this->load->view('infokom/new_konsultasi',$data);
+		$insert = array(
+			'nama_konsumen' => $this->input->post('nama_konsumen'),
+			'id_sarana' => $this->input->post('sarana'),
+			'id_kategori' => $this->input->post('kategori'),
+			'id_detail_kategori' => $this->input->post('detail_kategori'),
+			'detail_produk' => $this->input->post('detail_produk'),
+		);
+		$this->db->insert('tb_data', $insert);
+		$insert_id=$this->db->insert_id();
+		$redir = 'sertifikasi/sertifikasi/edit/'.$insert_id;
+		redirect($redir);
 	}
 }
 

@@ -20,7 +20,6 @@
     <section class="content">
       <div class="box box-solid box-primary">
       <div class="box-header with-border">
-        <!-- <h3 class="box-title">Users</h3> <button class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan" id='btn_tambah'><i class="fa fa-plus" style="margin-right:5px"></i>Create New</button> -->
         <h3 class="box-title">Data Sertifikasi</h3>
       </div>
       <div class="box-body" style="overflow-x:auto;" width="100%">

@@ -13,7 +13,7 @@
       </div>
     <?php endif; ?>
           <h1>
-            <i class="fa fa-list"></i> Manajemen Sertifikasi
+            <i class="fa fa-file-o"></i> Manajemen Sertifikasi
           </h1>
     </section>
     <?php if($this->session->userdata('si_idrole')==4){
@@ -55,7 +55,14 @@
                 <td width="14%">
                   <a href="" data-toggle="modal" data-target="#modal_edit<?php echo $key->id_data;?>"><button class="btn btn-success"><i class="fa fa-eye"></i></button></a>
                   <?php if($this->session->userdata('si_idrole')==4){ ?>
-                  <a href="<?php base_url() ?>sertifikasi/edit/<?php echo $key->id_data ?>"><button class="btn btn-primary"><i class="fa fa-edit"></i></button></a>
+                  <div class="btn-group">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><i class="fa fa-edit"></i></button>
+                  <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <li><a href="<?php base_url() ?>sertifikasi/edit/<?php echo $key->id_data ?>">Update Data</a></li>
+                    <li class="divider"></li>
+                    <li><a href="" data-toggle="modal" data-target="#modal_edit_kategori<?php echo $key->id_data;?>">Edit Kategori Produk</a></li>
+                  </ul>
+                  </div>  
                   <?php } ?>
                 </td>
               </tr>
@@ -85,6 +92,72 @@
             $petugasdetail2=$key->nama;
           } ?>
         <?php endforeach; ?>
+
+  <div class="modal fade" id="modal_edit_kategori<?php echo $i->id_data;?>"  tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <!--Content-->
+      <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header" style="background-color: #367fa9;">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 id="header_modal" class="modal-title" style="color:white">Edit Kategori Produk</h4>
+        </div>
+        <div class="modal-body">
+          <div class="" id="form_add_kegiatan">
+            <form method="post" action="<?php echo base_url('sertifikasi/sertifikasi/edit_kategori') ?>">
+              <input type="hidden" class="form-control" name="id_data" placeholder="" value="<?php echo $i->id_data ?>" required>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Nama Perusahaan</label>
+                      <input class="form-control" type="text" readonly="" name="" value="<?php echo $i->nama_sarana ?>">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Kategori</label>
+                      <select class="form-control" required id="kategori_produk" name="kategori">
+                        <option value="">- Pilih Kategori Produk -</option>
+                        <?php foreach ($kategori->result() as $key): ?>
+                          <option value="<?php echo $key->id_kategori ?>"><?php echo $key->kategori ?></option>
+                        <?php endforeach ?>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Detail Kategori</label>
+                      <select class="form-control" required id="detail_kategori_produk" name="detail_kategori">
+                        <option value="">- Pilih Detail Kategori Produk -</option>
+                        
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Detail Produk</label>
+                      <input type="text" class="form-control" name="detail_produk" placeholder="Detail Produk" required value="<?php echo $i->detail_produk ?>">
+                    </div>
+                  </div>
+                </div>
+            <!--Footer-->
+              <button class="btn btn-primary btn-block" type="submit" name="button"><i class="fa fa-paper-plane-o"></i>   Simpan</button>
+            </form>
+          </div>
+        </div>
+        <!--Footer-->
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
   <div class="modal fade" id="modal_edit<?php echo $id_user;?>"  tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <!--Content-->
@@ -245,6 +318,25 @@
        aaSorting: [[0, 'asc']]
     });
   });
+  $('#kategori_produk').change(function(){
+  var kategori_produk = $('#kategori_produk').val();
+  $.ajax({
+      dataType : 'JSON',
+      url: '<?php echo base_url('Infokom/Konsultasi/ajax_get_detail_kategori') ?>',
+      type: 'post',
+      data: {
+        id_kategori: kategori_produk
+      },
+      success: function (data) {
+        console.log(data);
+        $('.pilihan_2').remove();
+        for (var i = 0; i < data.length; i++) {
+          console.log('hehe');
+          $('#detail_kategori_produk').append("<option class='pilihan_2' value='"+data[i].id_detail_kategori+"'>"+data[i].detail_kategori+"</option>");
+        }
+      }
+    });
+});
   // $('#btn_tambah').click(function(event) {
   //   $('#header_modal').html('<i class="fa fa-plus" style="margin-right:5px"></i> New Konsultasi');
   //   $('#form_add').attr('hidden', false);

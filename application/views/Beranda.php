@@ -114,7 +114,7 @@
             <a href="<?php echo base_url('struktural/detail/pbf') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <?php } elseif ($this->session->userdata('si_idrole')==3) { ?>
+        <?php } elseif ($this->session->userdata('si_idrole')==0) { ?>
         <div class="col-sm-6">
           <div class="small-box bg-aqua">
             <div class="inner">
@@ -142,7 +142,7 @@
             <a href="<?php echo base_url('infokom/konsultasi') ?>" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-      <?php } elseif (($this->session->userdata('si_idrole')==4) || ($this->session->userdata('si_idrole')==2)) { ?>
+      <?php } elseif (($this->session->userdata('si_idrole')==4) || ($this->session->userdata('si_idrole')==2) || ($this->session->userdata('si_idrole')==3))  { ?>
           <!-- pangan -->
         <div class="col-sm-12">
           <div class="small-box bg-yellow">
@@ -208,8 +208,20 @@
               <i class="fa fa-archive"></i>
             </div>
           </div>
+        </div>
+        <a href="<?php echo base_url('perusahaan') ?>">
+        <div class="col-sm-12">
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3 style="color:white"><?php echo $sarana ?></h3>
+              <h4><font color="#ffffff">Perusahaan</font></h4>
+            </div>
+            <div class="icon">
+              <i class="fa fa-building-o"></i>
+            </div>
+          </div>
         </div>  
-        
+        </a>
         <?php } ?>
           <!-- small box -->
 

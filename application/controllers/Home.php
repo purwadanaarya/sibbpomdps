@@ -30,11 +30,11 @@ class Home extends CI_Controller {
 				$data['konsultasi_obattradisional']=$this->db->get('tb_data')->num_rows();
 				$this->db->where('id_kategori', '5');
 				$data['konsultasi_pbf']=$this->db->get('tb_data')->num_rows();
-			} elseif ($this->session->userdata('si_idrole')==3) {
+			} elseif ($this->session->userdata('si_idrole')==0) {
 				$this->db->where('status','Konsultasi');
 				$data['jumlah_konsultasi']=$this->db->get('tb_data')->num_rows();
 				$data['jumlah_sarana']=$this->db->get('tb_sarana')->num_rows();
-			} elseif (($this->session->userdata('si_idrole')==4)||($this->session->userdata('si_idrole')==2)) {
+			} elseif (($this->session->userdata('si_idrole')==4)||($this->session->userdata('si_idrole')==3)||($this->session->userdata('si_idrole')==2)) {
 				//Tidak Terbit
 				$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
 				$this->db->where('id_jenis_sarana', 1);
@@ -110,6 +110,7 @@ class Home extends CI_Controller {
 				$this->M_data->periode();
 				$data['obat_belum']=$this->db->get('tb_data')->num_rows();
 				//---------------------------------------------------------------//
+				$data['sarana']=$this->db->get('tb_sarana')->num_rows();
 			}
 			$this->load->view('Header');
 			$this->load->view('Beranda',$data);

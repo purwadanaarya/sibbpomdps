@@ -112,7 +112,7 @@
         <li class="header"><center>MAIN MENU</center></li>
         <li class="" id='btn_beranda'>
           <a href="<?php echo base_url('home') ?>">
-            <i class="fa fa-dashboard"></i> <span>Beranda</span>
+            <i class="fa fa-home"></i> <span>Beranda</span>
           </a>
         </li>
           <!--
@@ -139,43 +139,20 @@
                 <li><a href="<?php echo base_url('admin/kategori/konsultasi') ?>"><i class="fa fa-archive"></i> Kategori Konsultasi</a></li>
               </ul>
             </li>
-          <?php } elseif ($this->session->userdata('si_idrole')==2){ ?>
-            <li class="" id='btn_konsultasi'>
-              <a href="<?php echo base_url('infokom/konsultasi') ?>">
-                <i class="fa fa-list"></i> <span>Konsultasi</span>
-              </a>
-            </li>
-            <li class="" id='btn_sertifikasi'>
-              <a href="<?php echo base_url('sertifikasi/sertifikasi') ?>">
-                <i class="fa fa-list"></i> <span>Sertifikasi</span>
-              </a>
-            </li>
-          <?php } elseif ($this->session->userdata('si_idrole')==3){ ?>
-            <li class="" id='btn_konsultasi'>
-              <a href="<?php echo base_url('infokom/konsultasi') ?>">
-                <i class="fa fa-list"></i> <span>Konsultasi</span>
-              </a>
-            </li>
-            <li class="" id='btn_sertifikasi'>
-              <a href="<?php echo base_url('sertifikasi/sertifikasi') ?>">
-                <i class="fa fa-list"></i> <span>Sertifikasi</span>
-              </a>
-            </li>
-          <?php } elseif ($this->session->userdata('si_idrole')==4) { ?>
-            <li class="" id='btn_konsultasi'>
-              <a href="<?php echo base_url('infokom/konsultasi') ?>">
-                <i class="fa fa-list"></i> <span>Konsultasi</span>
-              </a>
-            </li>
-            <li class="" id='btn_sertifikasi'>
-              <a href="<?php echo base_url('sertifikasi/sertifikasi') ?>">
-                <i class="fa fa-list"></i> <span>Sertifikasi</span>
-              </a>
-            </li>
           <?php } ?>
+            <li class="" id='btn_konsultasi'>
+              <a href="<?php echo base_url('infokom/konsultasi') ?>">
+                <i class="fa fa-comment-o"></i> <span>Konsultasi</span>
+              </a>
+            </li>
+            <li class="" id='btn_sertifikasi'>
+              <a href="<?php echo base_url('sertifikasi/sertifikasi') ?>">
+                <i class="fa fa-file-o"></i> <span>Sertifikasi</span>
+              </a>
+            </li>
             <li class="" id='btn_perusahaan'>
               <a href="<?php echo base_url('perusahaan') ?>">
-                <i class="fa fa-building"></i> <span>Perusahaan</span>
+                <i class="fa fa-building-o"></i> <span>Perusahaan</span>
               </a>
             </li>
       </ul>

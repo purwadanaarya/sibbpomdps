@@ -13,7 +13,7 @@
       </div>
     <?php endif; ?>
           <h1>
-            <i class="fa fa-list"></i> Manajemen Konsultasi
+            <i class="fa fa-comment-o"></i> Manajemen Konsultasi
           </h1>
     </section>
     <!-- Main content -->
