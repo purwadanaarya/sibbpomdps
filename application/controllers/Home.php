@@ -136,6 +136,7 @@ class Home extends CI_Controller {
 		$this->db->where('status_dokumen', $status);
 		$data['sertifikasi'] = $this->db->get('tb_data');
 		$data['petugas'] = $this->db->get('tb_user');
+		$data['kategori']=$this->db->get('tb_kategori');
 
 		$this->load->view('header');
 		$this->load->view('sertifikasi/sertifikasi',$data);
