@@ -1,7 +1,7 @@
   <div class="content-wrapper">
     <section class="content-header">
           <h1>
-            <i class="fa fa-dashboard"></i> Beranda
+            <i class="fa fa-home"></i> Beranda
           </h1>
     </section>
     <!-- Main content -->
@@ -144,15 +144,30 @@
         </div>
       <?php } elseif (($this->session->userdata('si_idrole')==4) || ($this->session->userdata('si_idrole')==2) || ($this->session->userdata('si_idrole')==3))  { ?>
           <!-- pangan -->
-        <div class="col-sm-12">
+        <div class="col-sm-6">
           <div class="small-box bg-yellow">
             <div class="inner">
               <h3>Tahun : <?php echo $this->session->userdata('periode'); ?></h3>
+              <h4><br></h4>
             </div>
             <div class="icon">
+              <i class="fa fa-calendar"></i>
             </div>
           </div>  
         </div>
+        <a href="<?php echo base_url('perusahaan') ?>">
+        <div class="col-sm-6">
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3 style="color:white"><?php echo $sarana ?></h3>
+              <h4><font color="#ffffff">Perusahaan</font></h4>
+            </div>
+            <div class="icon">
+              <i class="fa fa-building-o"></i>
+            </div>
+          </div>
+        </div>  
+        </a>
         <div class="col-sm-6">
           <div class="small-box bg-green">
             <div class="inner">
@@ -209,19 +224,7 @@
             </div>
           </div>
         </div>
-        <a href="<?php echo base_url('perusahaan') ?>">
-        <div class="col-sm-12">
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3 style="color:white"><?php echo $sarana ?></h3>
-              <h4><font color="#ffffff">Perusahaan</font></h4>
-            </div>
-            <div class="icon">
-              <i class="fa fa-building-o"></i>
-            </div>
-          </div>
-        </div>  
-        </a>
+        
         <?php } ?>
           <!-- small box -->
 
