@@ -32,7 +32,7 @@ class User extends CI_Controller {
 			$this->session->set_flashdata('success','success create user!');
 			redirect('admin/user');
 		} elseif ($data=='fail') {
-			$this->session->set_flashdata('error','failed create user!');
+			$this->session->set_flashdata('error','Data sudah ada!');
 			redirect('admin/user');
 		} elseif ($data=='usernametaken') {
 			$this->session->set_flashdata('error','username already taken!');

@@ -108,17 +108,26 @@ class Sertifikasi extends CI_Controller {
 
 	public function tambah()
 	{
-		$insert = array(
-			'nama_konsumen' => $this->input->post('nama_konsumen'),
-			'id_sarana' => $this->input->post('sarana'),
-			'id_kategori' => $this->input->post('kategori'),
-			'id_detail_kategori' => $this->input->post('detail_kategori'),
-			'detail_produk' => $this->input->post('detail_produk'),
-		);
-		$this->db->insert('tb_data', $insert);
-		$insert_id=$this->db->insert_id();
-		$redir = 'sertifikasi/sertifikasi/edit/'.$insert_id;
-		redirect($redir);
+		$this->db->where('id_sarana', $this->input->post('sarana'));
+		$this->db->where('id_kategori', $this->input->post('kategori'));
+		$this->db->where('id_detail_kategori', $this->input->post('detail_kategori'));
+		$duplicate = $this->db->get('tb_data')->num_rows();
+		if($duplicate>0){
+			$this->session->set_flashdata('error','Sudah ada data yang sama!');
+			redirect('sertifikasi/sertifikasi/baru');
+		} else {
+			$insert = array(
+				'nama_konsumen' => $this->input->post('nama_konsumen'),
+				'id_sarana' => $this->input->post('sarana'),
+				'id_kategori' => $this->input->post('kategori'),
+				'id_detail_kategori' => $this->input->post('detail_kategori'),
+				'detail_produk' => $this->input->post('detail_produk'),
+			);
+			$this->db->insert('tb_data', $insert);
+			$insert_id=$this->db->insert_id();
+			$redir = 'sertifikasi/sertifikasi/edit/'.$insert_id;
+			redirect($redir);
+		}
 	}
 	public function edit_kategori()
 	{

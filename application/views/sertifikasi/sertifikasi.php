@@ -316,7 +316,7 @@
     $('#judul').text('SI KONSER');
     $('#btn_sertifikasi').addClass('active');
     $('#tb_data').DataTable({
-       aaSorting: [[0, 'asc']]
+       aaSorting: [[0, 'desc']]
     });
   });
   $('#kategori_produk').change(function(){
