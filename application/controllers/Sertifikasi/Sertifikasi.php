@@ -50,6 +50,7 @@ class Sertifikasi extends CI_Controller {
 	{
 		$id_data=$this->input->post('id_data');
 		$update = array(
+			'nama_konsumen' => $this->input->post('nama_konsumen'),
 			'tgl_surat_terima' => $this->input->post('tgl_surat_terima'),
 			'tindak_lanjut' => $this->input->post('tindak_lanjut'),
 			'petugas_1' => $this->input->post('petugas1'),

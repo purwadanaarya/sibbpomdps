@@ -37,6 +37,7 @@
             $kategori=$key['kategori'];
             $detail_kategori=$key['detail_kategori'];
             $detail_produk=$key['detail_produk'];
+            $stat_dok = $key['status_dokumen'];
             ///////////////////////////////////////////
             $tgl_surat_terima=$key['tgl_surat_terima'];
             if($tgl_surat_terima==''){
@@ -81,12 +82,6 @@
           }
         ?>
         <form action="<?php echo base_url('sertifikasi/sertifikasi/edit_process') ?>" method="post">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label>Nama Konsumen</label>
-              <input readonly class="form-control" value="<?php echo $nama_konsumen ?>" placeholder="Nama Konsumen" type="text" name="nama_konsumen">
-            </div>
-          </div>
           <div class="col-md-3">
             <div class="form-group">
               <label>Nama Perusahaan</label>
@@ -145,6 +140,12 @@
 
           <!-- perdulikan dari sini -->
           <input type="hidden" value="<?php echo $id_data ?>" name="id_data">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Nama Konsumen</label>
+              <input class="form-control" value="<?php echo $nama_konsumen ?>" placeholder="Nama Konsumen" type="text" name="nama_konsumen">
+            </div>
+          </div>
           <div class="col-md-6">
             <div class="form-group">
               <label>Tanggal Surat Terima</label>
@@ -237,9 +238,21 @@
               <label>Status PSB</label>
               <select required="" name="status_dokumen" class="form-control">
                 <option value="">- Pilih Status PSB -</option>
+                <?php if($stat_dok=='Belum Terbit'){ ?>
+                <option selected="" value="Belum Terbit">Belum Terbit <?php echo $keterangan ?></option>  
+                <?php } else { ?>
                 <option value="Belum Terbit">Belum Terbit <?php echo $keterangan ?></option>
+                <?php } ?>
+                <?php if($stat_dok=='Tidak Terbit'){ ?>
+                <option selected="" value="Tidak Terbit">Tidak Terbit <?php echo $keterangan ?></option>
+                <?php } else { ?>
                 <option value="Tidak Terbit">Tidak Terbit <?php echo $keterangan ?></option>
+                <?php } ?>
+                <?php if($stat_dok=='Terbit'){ ?>
+                <option selected="" value="Terbit">Terbit <?php echo $keterangan ?></option>
+                <?php } else { ?>
                 <option value="Terbit">Terbit <?php echo $keterangan ?></option>
+                <?php } ?>
               </select>
             </div>
           </div>

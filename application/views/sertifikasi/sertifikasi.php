@@ -61,6 +61,7 @@
                     <li><a href="<?php base_url() ?>sertifikasi/edit/<?php echo $key->id_data ?>">Update Data</a></li>
                     <li class="divider"></li>
                     <li><a href="" data-toggle="modal" data-target="#modal_edit_kategori<?php echo $key->id_data;?>">Edit Kategori Produk</a></li>
+                    <li><a href="<?php echo base_url('perusahaan/edit/').$key->id_sarana ?>">Edit Perusahaan</a></li>
                   </ul>
                   </div>  
                   <?php } ?>
