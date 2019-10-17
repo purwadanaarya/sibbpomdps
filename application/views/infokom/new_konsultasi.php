@@ -80,8 +80,8 @@
               <label>Status Berkas</label>
               <select class="form-control" required="" name="status">
                 <option value="">- Pilih Status Berkas -</option>
-                <option value="Konsultasi">Konsultasi</option>
-                <option value="PSB">PSB</option>
+                <option value="Konsultasi">Masih Tahap Konsultasi</option>
+                <option value="PSB">Permohonan PSB</option>
               </select>
             </div>
             <div class="form-group">

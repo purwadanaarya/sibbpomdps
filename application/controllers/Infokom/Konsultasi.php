@@ -61,16 +61,31 @@ class Konsultasi extends CI_Controller {
 		date_default_timezone_set("Asia/Makassar");
 		$date = date('Y-m-d h:m');
 		$datetime=$this->input->post('tgl').' '.$this->input->post('jam');
-		$konsultasi = array(
-			'nama_konsumen' => $this->input->post('nama_konsumen'),
-			'id_sarana' => $this->input->post('sarana'),
-			'tgl_konsultasi' => $datetime,
-			'id_jeniskonsultasi' => $this->input->post('konsultasi'),
-			'id_kategori' => $this->input->post('kategori'),
-			'id_detail_kategori' => $this->input->post('detail_kategori'),
-			'detail_produk' => $this->input->post('detail_produk'),
-			'status' => $this->input->post('status'),
-		);
+		if($this->input->post('status')=='PSB'){
+			$konsultasi = array(
+				'nama_konsumen' => $this->input->post('nama_konsumen'),
+				'id_sarana' => $this->input->post('sarana'),
+				'tgl_konsultasi' => $datetime,
+				'id_jeniskonsultasi' => $this->input->post('konsultasi'),
+				'id_kategori' => $this->input->post('kategori'),
+				'id_detail_kategori' => $this->input->post('detail_kategori'),
+				'detail_produk' => $this->input->post('detail_produk'),
+				'tgl_surat_terima'=> date('Y-m-d'),
+				'status' => $this->input->post('status'),
+			);
+		} else {
+			$konsultasi = array(
+				'nama_konsumen' => $this->input->post('nama_konsumen'),
+				'id_sarana' => $this->input->post('sarana'),
+				'tgl_konsultasi' => $datetime,
+				'id_jeniskonsultasi' => $this->input->post('konsultasi'),
+				'id_kategori' => $this->input->post('kategori'),
+				'id_detail_kategori' => $this->input->post('detail_kategori'),
+				'detail_produk' => $this->input->post('detail_produk'),
+				'status' => $this->input->post('status'),
+			);	
+		}
+		
 		if($this->db->insert('tb_data', $konsultasi)){
 			$this->session->set_flashdata('success','Berhasil Menambah Data Konsultasi!');
 			redirect('infokom/konsultasi');
