@@ -37,9 +37,9 @@
               <th>Tanggal Surat Terima</th>
               <th>Nama Konsumen</th>
               <th>Nama & Alamat</th>
-              <th>No Tlp</th>
               <th>Jenis Produk</th>
               <th>Status</th>
+              <th>Kesimpulan</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -49,9 +49,26 @@
                 <td><?php echo $key->tgl_surat_terima ?></td>
                 <td><?php echo $key->nama_konsumen ?></td>
                 <td><?php echo "$key->nama_sarana - $key->alamat_sarana" ?></td>
-                <td><?php echo $key->tlp_sarana ?></td>
                 <td><?php echo "$key->kategori, $key->detail_kategori - $key->detail_produk" ?></td>
+                <?php if($key->status_dokumen=='Tidak Terbit'){ ?>
+                <td><font style="color: red"><?php echo $key->status_dokumen ?></font></td>
+                <?php } else { ?>
                 <td><?php echo $key->status_dokumen ?></td>
+                <?php } ?>
+                <?php 
+                  if (($key->timeline_rekomendasi)&&($key->timeline_audit)) {
+                    if (($key->timeline_rekomendasi=='Tepat Waktu')&&($key->timeline_audit=='Tepat Waktu')){
+                      $timeline_kesimpulan = 'Tepat Waktu';
+                    }
+                    else{
+                      $timeline_kesimpulan = 'Tidak Tepat Waktu';
+                    }
+                  }
+                  else{
+                    $timeline_kesimpulan = '';
+                  }
+                 ?>
+                <td><?php echo $timeline_kesimpulan ?></td>
                 <td width="14%">
                   <a href="" data-toggle="modal" data-target="#modal_edit<?php echo $key->id_data;?>"><button class="btn btn-success"><i class="fa fa-eye"></i></button></a>
                   <?php if($this->session->userdata('si_idrole')==4){ ?>

@@ -24,7 +24,6 @@ class Sertifikasi extends CI_Controller {
 		$this->db->where('id_role', '4');
 		$data['petugas']=$this->db->get('tb_user');
 		$data['kategori']=$this->db->get('tb_kategori');
-
 		$this->load->view('header');
 		$this->load->view('sertifikasi/sertifikasi',$data);
 	}
@@ -56,12 +55,14 @@ class Sertifikasi extends CI_Controller {
 			'petugas_1' => $this->input->post('petugas1'),
 			'petugas_2' => $this->input->post('petugas2'),
 			'tanggal_audit' => $this->input->post('tgl_audit'),
+			'timeline_audit'=>$this->input->post('timeline_audit'),
 			'tanggal_audit_selesai' => $this->input->post('tgl_audit_selesai'),
 			'batas_waktu_perbaikan' => $this->input->post('batas_waktu_perbaikan'),
 			'tanggal_perbaikan' => $this->input->post('tgl_perbaikan'),
 			'keterangan' => $this->input->post('keterangan'),
 			'terbit_rekomendasi' => $this->input->post('terbit_rekomendasi'),
 			'status_dokumen' => $this->input->post('status_dokumen'),
+			'timeline_rekomendasi'=>$this->input->post('timeline_rekomendasi'),
 		);
 		$this->db->where('id_data', $id_data);
 		$this->db->update('tb_data', $update);

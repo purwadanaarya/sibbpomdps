@@ -52,13 +52,13 @@
               <tr>
                 <td><?php echo $key->tgl_konsultasi ?></td>
                 <td><?php echo $key->nama_konsumen ?></td>
-                <td><?php echo "$key->nama_sarana - $key->alamat_sarana" ?></td>
+                <td><?php echo "$key->nama_sarana - $key->alamat_sarana, $key->kabupaten" ?></td>
                 <td><?php echo $key->tlp_sarana ?></td>
                 <td><?php echo "$key->kategori, $key->detail_kategori - $key->detail_produk" ?></td>
                 <td><?php echo $key->jeniskonsultasi ?></td>
                 <td><?php echo $key->status ?></td>
                 <?php if($this->session->userdata('si_idrole')==3){ ?>
-                <td width="10%"><center><?=anchor("infokom/konsultasi/delete".$key->id_data,"<button class='btn btn-danger'><i class='fa fa-trash'></i></button",array('onclick' => "return confirm('Konsultasi $key->tgl_konsultasi atas nama $key->nama_konsumen akan dihapus. Apa anda yakin?')"))?></center></td>
+                <td width="10%"><center><?=anchor("infokom/konsultasi/delete/".$key->id_data,"<button class='btn btn-danger'><i class='fa fa-trash'></i></button",array('onclick' => "return confirm('Konsultasi $key->tgl_konsultasi atas nama $key->nama_konsumen akan dihapus. Apa anda yakin?')"))?></center></td>
                 <?php } ?>
               </tr>
             <?php endforeach ?>

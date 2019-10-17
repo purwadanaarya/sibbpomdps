@@ -15,7 +15,10 @@ class Konsultasi extends CI_Controller {
 		$this->db->join('tb_detail_kategori', 'tb_detail_kategori.id_detail_kategori = tb_data.id_detail_kategori');
 		$this->db->join('tb_jeniskonsultasi', 'tb_jeniskonsultasi.id_jeniskonsultasi = tb_data.id_jeniskonsultasi');
 		$this->db->join('tb_sarana', 'tb_sarana.id_sarana = tb_data.id_sarana');
-		$this->M_data->periode();
+		$this->db->join('tb_kabupaten', 'tb_kabupaten.id_kabupaten = tb_sarana.id_kabupaten');
+		$this->db->where('tgl_konsultasi!=', '');
+		$this->db->where('tb_data.status!=', 'PSB');
+		$this->M_data->periode_konsultasi();
 		$data['konsultasi'] = $this->db->get('tb_data');
 		$this->load->view('header');
 		$this->load->view('infokom/Konsultasi',$data);
@@ -41,9 +44,9 @@ class Konsultasi extends CI_Controller {
 			'email' => $this->input->post('email'),
 			'id_jenis_sarana' => $this->input->post('jenis_sarana'),
 			'id_detail_jenis_sarana' => $this->input->post('detail_jenis_sarana'),
-			'id_kabupaten' => $this->input->post('id_kabupaten'),
+			'id_kabupaten' => $this->input->post('kabupaten'),
 		);
-		//print_r($sarana);
+		print_r($sarana);
 		if($this->db->insert('tb_sarana', $sarana)){
 			$this->session->set_flashdata('success','Berhasil Menambah Data Perusahaan!');
 			redirect('infokom/konsultasi/baru');
@@ -57,10 +60,11 @@ class Konsultasi extends CI_Controller {
 	{
 		date_default_timezone_set("Asia/Makassar");
 		$date = date('Y-m-d h:m');
+		$datetime=$this->input->post('tgl').' '.$this->input->post('jam');
 		$konsultasi = array(
 			'nama_konsumen' => $this->input->post('nama_konsumen'),
 			'id_sarana' => $this->input->post('sarana'),
-			'tgl_konsultasi' => $date,
+			'tgl_konsultasi' => $datetime,
 			'id_jeniskonsultasi' => $this->input->post('konsultasi'),
 			'id_kategori' => $this->input->post('kategori'),
 			'id_detail_kategori' => $this->input->post('detail_kategori'),
@@ -86,6 +90,12 @@ class Konsultasi extends CI_Controller {
 		$this->db->where('id_kategori', $id_kategori);
 		$data = $this->db->get('tb_detail_kategori')->result_array();
 		echo json_encode($data);
+	}
+	public function delete($id='')
+	{
+		$this->db->where('id_data', $id);
+		$this->db->delete('tb_data');
+		redirect('infokom/konsultasi');
 	}
 
 }

@@ -27,6 +27,14 @@
         <form action="<?php echo base_url('infokom/konsultasi/new_konsultasi') ?>" method="post">
           <div class="col-md-12">
             <div class="form-group">
+              <label>Tanggal Konsultasi</label>
+              <input class="form-control" placeholder="Tangggal" type="date" name="tgl">
+            </div>
+            <div class="form-group">
+              <label>Jam</label>
+              <input class="form-control" placeholder="Tangggal" type="time" name="jam">
+            </div>
+            <div class="form-group">
               <label>Nama Konsumen</label>
               <input class="form-control" placeholder="Nama Konsumen" type="text" name="nama_konsumen">
             </div>
@@ -131,10 +139,10 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Kabupaten</label>
-                    <select  class="form-control" name="id_kabupaten" required="">
+                    <select  class="form-control" name="kabupaten" required="">
                       <option value="">- Pilih Kabupaten -</option>
                       <?php foreach ($kabupaten->result() as $key): ?>
-                        <option value="<?php $key->id_kabupaten ?>"><?php echo $key->kabupaten ?></option>
+                        <option value="<?php echo $key->id_kabupaten ?>"><?php echo $key->kabupaten ?></option>
                       <?php endforeach ?>
                     </select>
                   </div>
@@ -144,7 +152,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Telepon</label>
-                    <input type="number" class="form-control" name="tlp" placeholder="Telepon" required>
+                    <input type="text" class="form-control" name="tlp" placeholder="Telepon" required>
                   </div>
                 </div>
               </div>

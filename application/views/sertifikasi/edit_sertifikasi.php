@@ -79,6 +79,14 @@
             if($terbit_rekomendasi==''){
               $terbit_rekomendasi='';
             }
+            $timeline_audit=$key['timeline_audit'];
+            if($timeline_audit==''){
+              $timeline_audit='';
+            }
+            $timeline_rekomendasi=$key['timeline_rekomendasi'];
+            if($timeline_rekomendasi==''){
+              $timeline_rekomendasi='';
+            }
           }
         ?>
         <form action="<?php echo base_url('sertifikasi/sertifikasi/edit_process') ?>" method="post">
@@ -146,16 +154,26 @@
               <input class="form-control" value="<?php echo $nama_konsumen ?>" placeholder="Nama Konsumen" type="text" name="nama_konsumen">
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="form-group">
               <label>Tanggal Surat Terima</label>
               <input class="form-control" value="<?php echo $tgl_surat_terima ?>" placeholder="Tanggal Surat Terima" type="date" name="tgl_surat_terima">
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="form-group">
-              <label>Tindak Lanjut</label>
-              <input class="form-control" value="<?php echo $tindak_lanjut ?>" placeholder="Tindak Lanjut" type="text" name="tindak_lanjut">
+              <label>Tanggal Audit Mulai</label>
+              <input class="form-control" value="<?php echo $tgl_audit ?>" placeholder="Tanggal Audit" type="date" name="tgl_audit">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group"> 
+              <label>Timeline Audit</label>
+              <select class="form-control" name="timeline_audit">
+                <option value="">- Pilih Timeline Audit -</option>
+                <option value="Tepat Waktu">Tepat Waktu</option>
+                <option value="Tidak Tepat Waktu">Tidak Tepat Waktu</option>
+              </select>
             </div>
           </div>
           <div class="col-md-6">
@@ -190,8 +208,8 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label>Tanggal Audit Mulai</label>
-              <input class="form-control" value="<?php echo $tgl_audit ?>" placeholder="Tanggal Audit" type="date" name="tgl_audit">
+              <label>Tindak Lanjut</label>
+              <input class="form-control" value="<?php echo $tindak_lanjut ?>" placeholder="Tindak Lanjut" type="text" name="tindak_lanjut">
             </div>
           </div>
           <div class="col-md-6">
@@ -253,6 +271,16 @@
                 <?php } else { ?>
                 <option value="Terbit">Terbit <?php echo $keterangan ?></option>
                 <?php } ?>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group"> 
+              <label>Timeline Rekomendasi</label>
+              <select class="form-control" name="timeline_rekomendasi">
+                <option value="">- Pilih Timeline Rekomendasi -</option>
+                <option value="Tepat Waktu">Tepat Waktu</option>
+                <option value="Tidak Tepat Waktu">Tidak Tepat Waktu</option>
               </select>
             </div>
           </div>
