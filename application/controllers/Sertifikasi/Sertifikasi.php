@@ -54,6 +54,8 @@ class Sertifikasi extends CI_Controller {
 			'tindak_lanjut' => $this->input->post('tindak_lanjut'),
 			'petugas_1' => $this->input->post('petugas1'),
 			'petugas_2' => $this->input->post('petugas2'),
+			'petugas_3' => $this->input->post('petugas3'),
+			'petugas_4' => $this->input->post('petugas4'),
 			'tanggal_audit' => $this->input->post('tgl_audit'),
 			'timeline_audit'=>$this->input->post('timeline_audit'),
 			'tanggal_audit_selesai' => $this->input->post('tgl_audit_selesai'),
@@ -100,6 +102,7 @@ class Sertifikasi extends CI_Controller {
 			'id_kategori' => $this->input->post('kategori'),
 			'id_detail_kategori' => $this->input->post('detail_kategori'),
 			'detail_produk' => $this->input->post('detail_produk'),
+			'tgl_surat_terima' => date('Y-m-d'),
 		);
 		$this->db->insert('tb_data', $insert_data);
 		$insert_id=$this->db->insert_id();
@@ -120,9 +123,11 @@ class Sertifikasi extends CI_Controller {
 			$insert = array(
 				'nama_konsumen' => $this->input->post('nama_konsumen'),
 				'id_sarana' => $this->input->post('sarana'),
+				'id_jeniskonsultasi' => 4,
 				'id_kategori' => $this->input->post('kategori'),
 				'id_detail_kategori' => $this->input->post('detail_kategori'),
 				'detail_produk' => $this->input->post('detail_produk'),
+				'tgl_surat_terima' => date('Y-m-d'),
 			);
 			$this->db->insert('tb_data', $insert);
 			$insert_id=$this->db->insert_id();
@@ -141,6 +146,38 @@ class Sertifikasi extends CI_Controller {
 		$this->db->where('id_data', $id_data);
 		$this->db->update('tb_data', $update);
 		redirect('sertifikasi/sertifikasi');
+	}
+	public function cari()
+	{
+		$tahun = $this->input->post('tahun');
+		$bulan = $this->input->post('bulan');
+		$jenis = $this->input->post('jenis');
+		$tgl = $tahun.'-'.$bulan;
+		$this->db->join('tb_jeniskonsultasi', 'tb_jeniskonsultasi.id_jeniskonsultasi = tb_data.id_jeniskonsultasi');
+		$this->db->join('tb_sarana', 'tb_sarana.id_sarana=tb_data.id_sarana');
+		$this->db->join('tb_kategori', 'tb_kategori.id_kategori=tb_data.id_kategori');
+		$this->db->join('tb_detail_kategori', 'tb_detail_kategori.id_detail_kategori = tb_data.id_detail_kategori');
+		$this->db->join('tb_jenis_sarana', 'tb_jenis_sarana.id_jenis_sarana = tb_sarana.id_jenis_sarana');
+		$this->db->join('tb_detail_jenis_sarana', 'tb_detail_jenis_sarana.id_detail_jenis_sarana = tb_sarana.id_detail_jenis_sarana');
+		if($jenis=='PSB'){
+			$this->db->where('status', 'PSB');
+			$this->db->where('tgl_surat_terima>=', $tgl.'-01');
+			$this->db->where('tgl_surat_terima<=', $tgl.'-31');
+			$data['cari']='PSB';
+		} elseif ($jenis=='Terbit') {
+			$this->db->where('status_dokumen', 'Terbit');
+			$this->db->where('terbit_rekomendasi>=', $tgl.'-01');
+			$this->db->where('terbit_rekomendasi<=', $tgl.'-31');
+			$data['cari']='Terbit';
+		}
+		//$this->db->where('status !=', 'Konsultasi');
+		// $this->M_data->periode();
+		$data['sertifikasi'] = $this->db->get('tb_data');
+		$this->db->where('id_role', '4');
+		$data['petugas']=$this->db->get('tb_user');
+		$data['kategori']=$this->db->get('tb_kategori');
+		$this->load->view('header');
+		$this->load->view('sertifikasi/sertifikasi',$data);
 	}
 }
 

@@ -80,7 +80,7 @@
               <label>Status Berkas</label>
               <select class="form-control" required="" name="status">
                 <option value="">- Pilih Status Berkas -</option>
-                <option value="Konsultasi">Masih Tahap Konsultasi</option>
+                <option value="Konsultasi">Konsultasi</option>
                 <option value="PSB">Permohonan PSB</option>
               </select>
             </div>
@@ -224,7 +224,7 @@
     var id_jenis_sarana = $('#id_jenis_sarana').val();
     $.ajax({
         dataType : 'JSON',
-        url: '<?php echo base_url('Infokom/Konsultasi/ajax_get_detail_jenis_sarana') ?>',
+        url: '<?php echo base_url('infokom/konsultasi/ajax_get_detail_jenis_sarana') ?>',
         type: 'post',
         data: {
           id_jenis_sarana: id_jenis_sarana
@@ -243,7 +243,7 @@
     var kategori_produk = $('#kategori_produk').val();
     $.ajax({
         dataType : 'JSON',
-        url: '<?php echo base_url('Infokom/Konsultasi/ajax_get_detail_kategori') ?>',
+        url: '<?php echo base_url('infokom/konsultasi/ajax_get_detail_kategori') ?>',
         type: 'post',
         data: {
           id_kategori: kategori_produk

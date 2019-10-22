@@ -217,7 +217,7 @@ $('#jenis_sarana').change(function(){
   var id_jenis_sarana = $('#jenis_sarana').val();
   $.ajax({
       dataType : 'JSON',
-      url: '<?php echo base_url('Infokom/Konsultasi/ajax_get_detail_jenis_sarana') ?>',
+      url: '<?php echo base_url('infokom/konsultasi/ajax_get_detail_jenis_sarana') ?>',
       type: 'post',
       data: {
         id_jenis_sarana: id_jenis_sarana
@@ -236,7 +236,7 @@ $('#kategori_produk_1').change(function(){
   var kategori_produk = $('#kategori_produk_1').val();
   $.ajax({
       dataType : 'JSON',
-      url: '<?php echo base_url('Infokom/Konsultasi/ajax_get_detail_kategori') ?>',
+      url: '<?php echo base_url('infokom/konsultasi/ajax_get_detail_kategori') ?>',
       type: 'post',
       data: {
         id_kategori: kategori_produk
@@ -255,7 +255,7 @@ $('#kategori_produk').change(function(){
   var kategori_produk = $('#kategori_produk').val();
   $.ajax({
       dataType : 'JSON',
-      url: '<?php echo base_url('Infokom/Konsultasi/ajax_get_detail_kategori') ?>',
+      url: '<?php echo base_url('infokom/konsultasi/ajax_get_detail_kategori') ?>',
       type: 'post',
       data: {
         id_kategori: kategori_produk

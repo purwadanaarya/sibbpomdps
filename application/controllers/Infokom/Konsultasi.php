@@ -21,7 +21,7 @@ class Konsultasi extends CI_Controller {
 		$this->M_data->periode_konsultasi();
 		$data['konsultasi'] = $this->db->get('tb_data');
 		$this->load->view('header');
-		$this->load->view('infokom/Konsultasi',$data);
+		$this->load->view('infokom/konsultasi',$data);
 	}
 	public function baru()
 	{

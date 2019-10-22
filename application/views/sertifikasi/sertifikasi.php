@@ -22,19 +22,33 @@
       $disabled='disabled';
     } ?>
     <!-- Main content -->
-    
+
     <section class="content">
       <div class="box box-solid box-primary">
       <div class="box-header with-border">
         <!-- <h3 class="box-title">Users</h3> <button class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan" id='btn_tambah'><i class="fa fa-plus" style="margin-right:5px"></i>Create New</button> -->
-        <h3 class="box-title">Data Sertifikasi</h3><a href="<?php echo base_url('sertifikasi/sertifikasi/baru') ?>"><button <?php echo $disabled ?> class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan"><i class="fa fa-plus" style="margin-right:5px"></i>Tambah Data</button></a>
+        <h3 class="box-title">Data Sertifikasi</h3>
+
+        	
+
+			<a href="<?php echo base_url('sertifikasi/sertifikasi/baru') ?>">
+        	<button <?php echo $disabled ?> class="pull-right btn btn-success" type="button" name="btn_tambah_kegiatan"><i class="fa fa-plus" style="margin-right:5px"></i>Tambah Data</button></a>
+
+        	<button class="pull-right btn btn-info" type="button" name="btn_tambah_kegiatan" id='btn_cari'><i class="fa fa-search" style="margin-right:5px"></i>Cari</button>
 
       </div>
       <div class="box-body" style="overflow-x:auto;">
         <table id="tb_data" class="table table-responsive table-striped table-bordered table-hover text-left" >
           <thead>
             <tr>
+            <?php if(isset($cari)){ ?>
+            <?php	if($cari=='PSB'){ ?>
+			  <th>Tanggal Surat Terima</th>
+            <?php	}elseif ($cari=='Terbit') { ?>
+              <th>Tanggal Terbit Rekomendasi</th>	
+            <?php } } else { ?>
               <th>Tanggal Surat Terima</th>
+            <?php } ?>
               <th>Nama Konsumen</th>
               <th>Nama & Alamat</th>
               <th>Jenis Produk</th>
@@ -46,16 +60,26 @@
           <tbody class="">
             <?php foreach ($sertifikasi->result() as $key): ?>
               <tr>
-                <td><?php echo $key->tgl_surat_terima ?></td>
+              	<?php if(isset($cari)){ ?>
+	            <?php	if($cari=='PSB'){ ?>
+				  <td><?php echo $key->tgl_surat_terima ?></td>
+	            <?php	}elseif ($cari=='Terbit') { ?>
+	              <td><?php echo $key->terbit_rekomendasi ?></td>
+	            <?php } } else { ?>
+	              <td><?php echo $key->tgl_surat_terima ?></td>
+	            <?php } ?>
+                
                 <td><?php echo $key->nama_konsumen ?></td>
                 <td><?php echo "$key->nama_sarana - $key->alamat_sarana" ?></td>
                 <td><?php echo "$key->kategori, $key->detail_kategori - $key->detail_produk" ?></td>
-                <?php if($key->status_dokumen=='Tidak Terbit'){ ?>
+                <?php if($key->status_dokumen==''){ ?>
+                <td>Permohonan PSB</td>
+                <?php }elseif($key->status_dokumen=='Tidak Terbit'){ ?>
                 <td><font style="color: red"><?php echo $key->status_dokumen ?></font></td>
                 <?php } else { ?>
                 <td><?php echo $key->status_dokumen ?></td>
                 <?php } ?>
-                <?php 
+                <?php
                   if (($key->timeline_rekomendasi)&&($key->timeline_audit)) {
                     if (($key->timeline_rekomendasi=='Tepat Waktu')&&($key->timeline_audit=='Tepat Waktu')){
                       $timeline_kesimpulan = 'Tepat Waktu';
@@ -80,7 +104,7 @@
                     <li><a href="" data-toggle="modal" data-target="#modal_edit_kategori<?php echo $key->id_data;?>">Edit Kategori Produk</a></li>
                     <li><a href="<?php echo base_url('perusahaan/edit/').$key->id_sarana ?>">Edit Perusahaan</a></li>
                   </ul>
-                  </div>  
+                  </div>
                   <?php } ?>
                 </td>
               </tr>
@@ -94,7 +118,69 @@
   <!-- /.content-wrapper -->
   <?php $this->load->view('Footer'); ?>
 
+    <div class="modal fade" id="modal_cari" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <!--Content-->
+      <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header" style="background-color: #367fa9;">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 id="header_modal" class="modal-title" style="color:white"><i class="fa fa-search" style="margin-right:5px"></i>Cari</h4>
+        </div>
 
+        <!--Body-->
+        <div class="modal-body">
+          <div class="" id="form_add">
+            <form method="post" action="<?php echo base_url('sertifikasi/sertifikasi/cari') ?>">
+              <div class="row">
+                <div class="col-xs-4">
+                  <div class="form-group">
+                    <label>Tahun</label>
+                    <input type="number" class="form-control" name="tahun" value="<?php echo $this->session->userdata('periode'); ?>" required>
+                  </div>
+                </div>
+                <div class="col-xs-4">
+                  <div class="form-group">
+                    <label>Bulan</label>
+                    <select class="form-control" required="" name="bulan">
+                    	<option value="">- Pilih Bulan -</option>
+                    	<option value="01">Januari</option>
+                    	<option value="02">Februari</option>
+                    	<option value="03">Maret</option>
+                    	<option value="04">April</option>
+                    	<option value="05">Mei</option>
+                    	<option value="06">Juni</option>
+                    	<option value="07">Juli</option>
+                    	<option value="08">Agustus</option>
+                    	<option value="09">September</option>
+                    	<option value="10">Oktober</option>
+                    	<option value="11">November</option>
+                    	<option value="12">Desember</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xs-4">
+                  <div class="form-group">
+                    <label>Jenis</label>
+                    <select class="form-control" required="" name="jenis">
+                    	<option value="">- Pilih Jenis -</option>
+                    	<option value="PSB">Permohonan PSB</option>
+                    	<option value="Terbit">Terbit Rekomendasi</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-search"></i>   Cari</button>
+            </form>
+          </div>
+        </div>
+        <!--Footer-->
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
   <?php
         foreach($sertifikasi->result() as $i):
             $id_user=$i->id_data;
@@ -102,12 +188,20 @@
             $password=$i->nama_konsumen;
             $nama=$i->nama_konsumen;
             $id_role=$i->nama_konsumen;
+            $petugasdetail1='';
+            $petugasdetail2='';
+            $petugasdetail3='';
+            $petugasdetail4='';
         ?>
         <?php foreach ($petugas->result() as $key): ?>
         <?php  if($key->id_user==$i->petugas_1){
             $petugasdetail1=$key->nama;
           } elseif($key->id_user==$i->petugas_2){
             $petugasdetail2=$key->nama;
+          } elseif($key->id_user==$i->petugas_3){
+            $petugasdetail3=$key->nama;
+          } elseif($key->id_user==$i->petugas_4){
+            $petugasdetail4=$key->nama;
           } ?>
         <?php endforeach; ?>
 
@@ -153,7 +247,7 @@
                       <label>Detail Kategori</label>
                       <select class="form-control" required id="detail_kategori_produk" name="detail_kategori">
                         <option value="">- Pilih Detail Kategori Produk -</option>
-                        
+
                       </select>
                     </div>
                   </div>
@@ -267,6 +361,16 @@
                     <td><?php echo $petugasdetail2 ?></td>
                   </tr>
                   <tr>
+                    <td>Petugas 3</td>
+                    <td>:</td>
+                    <td><?php echo $petugasdetail3 ?></td>
+                  </tr>
+                  <tr>
+                    <td>Petugas 4</td>
+                    <td>:</td>
+                    <td><?php echo $petugasdetail4 ?></td>
+                  </tr>
+                  <tr>
                     <td>Tanggal Audit</td>
                     <td>:</td>
                     <td><?php echo $i->tanggal_audit.' - '.$i->tanggal_audit_selesai ?></td>
@@ -325,8 +429,8 @@
 
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url('assets/Styling/plugins/jQuery/jquery-2.2.3.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/Styling/plugins/dataTables/jquery.dataTables.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/Styling/plugins/dataTables/dataTables.bootstrap.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/Styling/plugins/datatables/jquery.dataTables.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/Styling/plugins/datatables/dataTables.bootstrap.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/Styling/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') ?>"></script>
 <script type="text/javascript">
   $(document).ready(function() {
@@ -335,6 +439,10 @@
     $('#tb_data').DataTable({
        aaSorting: [[0, 'desc']]
     });
+  });
+  $('#btn_cari').click(function(event) {
+    $('#form_add').attr('hidden', false);
+    $('#modal_cari').modal('show');
   });
   $('#kategori_produk').change(function(){
   var kategori_produk = $('#kategori_produk').val();

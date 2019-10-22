@@ -55,6 +55,14 @@
             if($petugas2==''){
               $petugas2='';
             }
+            $petugas3=$key['petugas_3'];
+            if($petugas3==''){
+              $petugas3='';
+            }
+            $petugas4=$key['petugas_4'];
+            if($petugas4==''){
+              $petugas4='';
+            }
             $tgl_audit=$key['tanggal_audit'];
             if($tgl_audit==''){
               $tgl_audit='';
@@ -167,7 +175,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="form-group"> 
+            <div class="form-group">
               <label>Timeline Audit</label>
               <select class="form-control" name="timeline_audit">
                 <option value="">- Pilih Timeline Audit -</option>
@@ -198,6 +206,36 @@
                 <option value="">- Pilih Petugas -</option>
                 <?php foreach ($petugas->result() as $key): ?>
                   <?php if($key->id_user==$petugas2){ ?>
+                  <option selected value="<?php echo $key->id_user ?>"><?php echo $key->nama ?></option>
+                  <?php } else { ?>
+                  <option value="<?php echo $key->id_user ?>"><?php echo $key->nama ?></option>
+                  <?php } ?>
+                <?php endforeach ?>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Petugas 3</label>
+              <select class="selectpicker form-control" data-live-search="true" name="petugas3">
+                <option value="">- Pilih Petugas -</option>
+                <?php foreach ($petugas->result() as $key): ?>
+                  <?php if($key->id_user==$petugas3){ ?>
+                  <option selected value="<?php echo $key->id_user ?>"><?php echo $key->nama ?></option>
+                  <?php } else { ?>
+                  <option value="<?php echo $key->id_user ?>"><?php echo $key->nama ?></option>
+                  <?php } ?>
+                <?php endforeach ?>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Petugas 4</label>
+              <select class="selectpicker form-control" data-live-search="true" name="petugas4">
+                <option value="">- Pilih Petugas -</option>
+                <?php foreach ($petugas->result() as $key): ?>
+                  <?php if($key->id_user==$petugas4){ ?>
                   <option selected value="<?php echo $key->id_user ?>"><?php echo $key->nama ?></option>
                   <?php } else { ?>
                   <option value="<?php echo $key->id_user ?>"><?php echo $key->nama ?></option>
@@ -257,7 +295,7 @@
               <select required="" name="status_dokumen" class="form-control">
                 <option value="">- Pilih Status PSB -</option>
                 <?php if($stat_dok=='Belum Terbit'){ ?>
-                <option selected="" value="Belum Terbit">Belum Terbit <?php echo $keterangan ?></option>  
+                <option selected="" value="Belum Terbit">Belum Terbit <?php echo $keterangan ?></option>
                 <?php } else { ?>
                 <option value="Belum Terbit">Belum Terbit <?php echo $keterangan ?></option>
                 <?php } ?>
@@ -275,7 +313,7 @@
             </div>
           </div>
           <div class="col-md-12">
-            <div class="form-group"> 
+            <div class="form-group">
               <label>Timeline Rekomendasi</label>
               <select class="form-control" name="timeline_rekomendasi">
                 <option value="">- Pilih Timeline Rekomendasi -</option>

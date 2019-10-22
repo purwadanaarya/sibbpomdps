@@ -112,7 +112,7 @@ class Home extends CI_Controller {
 				//---------------------------------------------------------------//
 				$data['sarana']=$this->db->get('tb_sarana')->num_rows();
 			}
-			$this->load->view('Header');
+			$this->load->view('header');
 			$this->load->view('Beranda',$data);
 		}
 		// $this->session->set_userdata('link','https://digidev.id');

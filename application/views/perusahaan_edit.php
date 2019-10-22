@@ -36,7 +36,7 @@
         <div class="col-md-12">
           <div class="form-group">
             <label>Telepon Perusahaan</label>
-            <input class="form-control" value="<?php echo $key->tlp_sarana ?>" placeholder="Telepon Perusahaan" type="number" required="" name="telepon_perusahaan">
+            <input class="form-control" value="<?php echo $key->tlp_sarana ?>" placeholder="Telepon Perusahaan" type="text" required="" name="telepon_perusahaan">
           </div>
         </div>
         <div class="col-md-12">

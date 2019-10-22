@@ -72,8 +72,8 @@
 
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url('assets/Styling/plugins/jQuery/jquery-2.2.3.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/Styling/plugins/dataTables/jquery.dataTables.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/Styling/plugins/dataTables/dataTables.bootstrap.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/Styling/plugins/datatables/jquery.dataTables.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/Styling/plugins/datatables/dataTables.bootstrap.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/Styling/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') ?>"></script>
 <script type="text/javascript">
   $(document).ready(function() {
