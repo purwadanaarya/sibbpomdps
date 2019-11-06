@@ -62,11 +62,11 @@
               <tr>
               	<?php if(isset($cari)){ ?>
 	            <?php	if($cari=='PSB'){ ?>
-				  <td><?php echo $key->tgl_surat_terima ?></td>
+				  <td><?php echo date("j F Y", strtotime($key->tgl_surat_terima)) ?></td>
 	            <?php	}elseif ($cari=='Terbit') { ?>
-	              <td><?php echo $key->terbit_rekomendasi ?></td>
+	              <td><?php echo date("j F Y", strtotime($key->terbit_rekomendasi)) ?></td>
 	            <?php } } else { ?>
-	              <td><?php echo $key->tgl_surat_terima ?></td>
+	              <td><?php echo date("j F Y", strtotime($key->tgl_surat_terima)) ?></td>
 	            <?php } ?>
                 
                 <td><?php echo $key->nama_konsumen ?></td>

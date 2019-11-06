@@ -50,7 +50,7 @@
           <tbody class="">
             <?php foreach ($konsultasi->result() as $key): ?>
               <tr>
-                <td><?php echo $key->tgl_konsultasi ?></td>
+                <td><?php echo date("j F Y / H:i", strtotime($key->tgl_konsultasi)) ?></td>
                 <td><?php echo $key->nama_konsumen ?></td>
                 <td><?php echo "$key->nama_sarana - $key->alamat_sarana, $key->kabupaten" ?></td>
                 <td><?php echo $key->tlp_sarana ?></td>
