@@ -244,11 +244,25 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
+<script type="text/javascript">
+  var url = "http://192.168.88.55/bbpomdenpasar/"; // url tujuan
+    var count = 180; // dalam detik
+    function countDown() {
+      if (count > 0) {
+          count--;
+          var waktu = count + 1;                    
+          setTimeout("countDown()", 1000);
+      } else {
+          window.location.href = url;
+      }
+    }
+</script>
 <script src="<?php echo base_url('assets/Styling/plugins/jQuery/jquery-2.2.3.min.js') ?>"></script>
   <script type="text/javascript">
   $(document).ready(function() {
     $('#judul').text('SI KONSER');
     $('#btn_beranda').addClass('active');
+    countDown();
   });
 </script>
 

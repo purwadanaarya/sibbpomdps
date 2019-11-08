@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/Styling/dist/css/skins/_all-skins.min.css') ?>">
 
   <link rel="stylesheet" href="<?php echo base_url('assets/Styling/plugins/datatables/dataTables.bootstrap.css') ?>">
+  <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/select2/dist/css/select2.min.css">
   <!-- Latest compiled and minified CSS -->
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.7/dist/css/bootstrap-select.min.css">

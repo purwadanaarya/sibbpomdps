@@ -167,6 +167,22 @@
                       </div>
                     </div>
                   </form>
+                <body>
+    <!-- <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-4">
+                <select class="selectpicker form-control" multiple data-live-search="true">
+                  <option data-icon="icon-heart">Web Master</option>
+                  <option>Graphic Design</option>
+                  <option>Web Programming</option>
+                  <option>Digital Marketing</option>
+                  <option>Web Design</option>
+                  <option>Mobile Apps</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</body> -->
                 </div>
               </div>
               <!-- /.tab-pane -->
@@ -198,10 +214,12 @@
 <script src="<?php echo base_url('assets/Styling/plugins/dataTables/dataTables.bootstrap.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/Styling/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') ?>">
 </script>
+<script src="https://adminlte.io/themes/AdminLTE/bower_components/select2/dist/js/select2.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.7/dist/js/bootstrap-select.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
   $('#judul').text('SI KONSER');
+  $('.select2').select2();
   $('#btn_sertifikasi').addClass('active');
   $('.table').DataTable({
      aaSorting: [[0, 'asc']]
