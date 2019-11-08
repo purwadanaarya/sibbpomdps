@@ -168,6 +168,12 @@
                     </div>
                   </form>
                 <body>
+                <!-- <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                </div> -->
     <!-- <div class="container mt-3">
         <div class="row">
             <div class="col-md-4">
@@ -216,6 +222,16 @@
 </script>
 <script src="https://adminlte.io/themes/AdminLTE/bower_components/select2/dist/js/select2.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.7/dist/js/bootstrap-select.min.js"></script>
+         
+<script src="https://adminlte.io/themes/AdminLTE/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="https://adminlte.io/themes/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="https://adminlte.io/themes/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script>
+  $(function() {
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
+    $('[data-mask]').inputmask();
+  });
+</script>
 <script type="text/javascript">
 $(document).ready(function() {
   $('#judul').text('SI KONSER');

@@ -26,9 +26,19 @@ function DDMMYYYY(value, event) {
 <?php 
 } ?>
 
+
 <form action="datetime.php" method="post">
+<input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
 <input type="tel" maxlength="10" name="date" placeholder="dd-mm-yyyy"
     oninput="this.value = DDMMYYYY(this.value, event)" />
 <input type="submit" name="submit" value="submit">
 </form>
 
+<script src="https://adminlte.io/themes/AdminLTE/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="https://adminlte.io/themes/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="https://adminlte.io/themes/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script>
+  $(function() {
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+  })
+</script>
